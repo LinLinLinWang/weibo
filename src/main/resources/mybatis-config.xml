@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">  
+<configuration>  
+
+    <!-- 别名定义 -->  
+    <typeAliases>  
+    
+        <typeAlias alias="account"  type="edu.grimm.entity.Account" />  
+         <typeAlias alias="acc_pro_re"  type="edu.grimm.entity.AccProRe" />  
+          <typeAlias alias="project"  type="edu.grimm.entity.Project" />  
+    </typeAliases>  
+  
+</configuration>  
