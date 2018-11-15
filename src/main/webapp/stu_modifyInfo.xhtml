@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>修改用户信息 Title</title>
+
+    </h:head>
+    <h:body>
+        <div id="bodydiv">
+            <!--//-->
+            <h:form>
+                <h:panelGrid bgcolor="#99cc00" cellspacing="20" columns="3" style="margin:30px auto;">
+                    <f:facet name="header">
+                        <h1>修改用户信息</h1>
+                        <hr/>
+                    </f:facet>
+
+                    <h:outputLabel for="username" value="用户名："></h:outputLabel>
+                    <h:inputText value="#{loginbean.student.username}" readonly="true" id="username" class="login"></h:inputText>
+                    <br/>
+
+                    <h:outputLabel for="name" value="姓名："></h:outputLabel>
+                    <h:inputText class="login" value="#{loginbean.student.name}" pt:placeholder="#{loginbean.student.name}" id="name" requiredMessage=" 姓名不可以为空" validatorMessage=" 请输入真实姓名" required="true">
+                            <f:validateRegex pattern="^[\u4E00-\u9FA5A-Za-z]+$"></f:validateRegex>
+                        </h:inputText>
+                        <h:message for="name" style="color: red" id="mname"></h:message>
+
+                        <h:outputLabel for="password" value="密码："></h:outputLabel>
+                        <h:inputSecret class="login" value="#{loginbean.student.password}"  id="password" validatorMessage=" 密码位数应为6—12位" requiredMessage=" 密码不可以为空" required="true">
+                                <f:validateLength minimum="6" maximum="12"></f:validateLength>
+                            </h:inputSecret>
+                            <h:message for="password" id="mpassword" style="color: red"></h:message>
+
+                            <h:outputLabel for="email" value="邮箱："></h:outputLabel>
+                        <h:inputText  pt:placeholder="#{loginbean.student.email}" value="#{loginbean.student.email}" id="email" class="login" requiredMessage=" 电子邮箱不可以为空" validatorMessage=" 输入正确的Email" required="true">
+                                <f:validateRegex pattern="^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$"></f:validateRegex>
+                            </h:inputText>
+                            <h:message for="email" style="color: red" id="memail"></h:message>
+
+                            <f:facet name="footer">
+                                <h:panelGroup style="text-align: center;display:block;">
+                                    <h:commandButton value="确认修改" action="#{loginbean.updateStudent()}" >
+
+                                    </h:commandButton>
+                                    <h:commandButton value="返回"  />
+                                </h:panelGroup>
+                            </f:facet>
+
+                            </h:panelGrid>
+                            </h:form>
+                            <!--//-->
+                            
+                            <h:outputText id="msg" value="#{loginbean.updateMessage}" style="color: #{loginbean.updateColor}"></h:outputText>
+                            </div>
+                            </h:body>
+                            </html>
+

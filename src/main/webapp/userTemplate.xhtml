@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>Facelets Template</title>
+        <script type="text/javascript" src="../resource/script/jquery.slides.min.js"></script>
+        <script type="text/javascript" src="../resource/script/slide.js"></script>
+        <script type="text/javascript" src="../resource/script/jquery-3.2.0.min.js"></script>
+        
+        <style>
+            body, h1, h2,h3,h4,h5,h6,p,dl,dd,ol,ul,form, input,textarea,th,td,select { margin:0; padding:0;}
+            em,i { font-style:normal;}
+            li { list-style:none;}
+            a { text-decoration:none; cursor:pointer; color: black;}
+            a:focus {outline:none;}
+            b{ font-weight:normal;}
+            img { border:none; vertical-align:top;}
+            input, textarea {vertical-align: middle;outline: none; border:none; background:none;box-sizing:content-box;}
+            textarea { resize:none; overflow:auto; }
+            table { border-spacing:0px; border:none; border-collapse:collapse;}
+            body, input, select, button, textarea { font-size: 12px;font-family: "å¾®è½¯é›…é»‘";background:#fff;}
+            html, body {position: relative;height: 100%;}
+
+
+            .index{
+                width: 100%;height: auto;
+                overflow: hidden;
+            }
+            .index-out{
+                width:100%;height: auto;
+                overflow: hidden;
+                background: #fafafa;
+            }
+            .top-index{
+                width: 990px;height: 70px;
+                margin:0 auto;
+                overflow: hidden;
+            }
+            .top-logo{
+                display: block;
+                float: left;
+                margin-top: 16px;
+            }
+            .top-left{
+                /*border: 1px solid black;*/
+                margin-left: 70px;
+                /*float: right;*/
+                height: 70px;
+                width: 900px;
+            }
+            .top-ul{
+                /*border: 1px solid black;*/
+                float: left;
+                height: 70px;
+            }
+            .top-li{
+                height: 70px;
+                font-size: 16px;
+                margin: 0 20px;
+                padding:0 6px;
+                line-height: 70px;
+                float: left;
+                cursor: pointer;
+            }
+            .top-li:hover{
+                color: #5195f3;
+            }
+            .top-li-active{
+                color: #5195f3;
+                box-sizing: border-box;
+                border-bottom: 2px solid #5195f3;
+            }
+            .top-right{
+                /*margin-right:  70px;*/
+                /*border: 1px solid black;*/
+                float: right;
+                height: 30px;
+                margin-top: 10px;
+                font-size: 13px;
+                font-weight: bolder;
+                /*width: 300px;*/
+            }
+            .container{
+                margin-top: 20px;
+            }
+/*                        .top-enter{
+                            display: block;
+                            width: 88px;height: 70px;
+                            line-height: 70px;
+                            font-size: 14px;
+                            float: left;
+                            text-align: center;
+                        }
+                        .top-active{
+                            background: #5195f3;
+                            color: #fff;
+                        }
+                        .top-margin{
+                            margin-left: 16px;
+                        }*/
+        </style>
+    </h:head>
+
+    <h:body>
+        <div class="index">
+            <div class="top-index">
+                <a href="/"><img class="top-logo" style="margin-top: 2px;" src="../resource/pictures/logo.jpg"></img></a>
+                <div class="top-left">
+                    <ul class="top-ul">
+                        <a href="/"><li class="top-li top-li-active">首页</li></a>
+                        <a href="/"><li class="top-li ">课程列表</li></a>
+                        <a href="/"><li class="top-li ">我的信息</li></a>
+                        <a href="/"><li class="top-li ">我的课程</li></a>
+                    </ul>
+                    <ul class="top-right">
+                            <a href="" class="">登录</a>
+                            <a href="" class="">注册</a>
+                            <a href="" class="">注销</a>
+                            <a href="" class="">名字</a>
+                    </ul>       
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <ui:include src="hoop.html" />
+    </h:body>
+
+</html>
