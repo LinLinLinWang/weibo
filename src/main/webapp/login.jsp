@@ -64,35 +64,29 @@
 	});
 </head>
 <body>
-<div class="body_div"
-		style="height: 550px; background-image: url('resources/img/bg.jpg');">
-	 			<div class="form_div" style=" background-color:aliceblue ;height:420px ;width:346px;"> -->
-		<form id="form_login" class="form-horizontal" action="user_login.smvc"
-			method="post"
-			style="float: right; margin-top: 50px; margin-right: 180px; width: 346px; height: 450px;">
-			<span class="heading">用户登录</span>
-			<div class="form-group">
-				<input type="text" class="form-control" id="number" name="number"
-					placeholder="用户名"><span id="number_alert"></span> <i
-					class="fa fa-user"></i>
-			</div>
-			<div class="form-group help">
-				<input type="password" class="form-control" id="password"
-					name="password" placeholder="密码"><span id="password_alert"></span>
-				<i class="fa fa-lock"></i> <a href="#" class="fa fa-question-circle"></a>
-			</div>
-			<div class="form-group" style="width: 310px;">
-
-				<!-- <input class="btn btn-default" style="width: 200px;"  value="立刻登录" type="submit"/> -->
-				<button id="sbumit_button" type="button" class="btn btn-default"
-					style="width: 200px;">立刻登录</button>
-				<br>
-				<br>
-				<br> <a href="register_xs.jsp" style="margin-left: 31px;">注
-					册</a> </span>
-			</div>
-		</form>
-
+<div class="body_div" style=" height:550px;background-image: url('resources/img/bg.jpg'); ">
+	<form id="form_login" class="form-horizontal"  action="user_login.smvc" method="post" style="float: right;margin-top:50px; margin-right: 180px;width: 346px; height: 450px;">
+					<span class="heading">用户登录</span>
+					<div class="form-group">
+						<input type="text" class="form-control" id="number" name="number" placeholder="用户名"><span id="number_alert"></span>
+						<i class="fa fa-user"></i>
+					</div>
+					<div class="form-group help">
+						<input type="password" class="form-control" id="password" name="password" placeholder="密码"><span id="password_alert"></span>
+						<i class="fa fa-lock"></i>
+						<a href="#" class="fa fa-question-circle"></a>
+					</div>
+					<div class="form-group" style="width: 310px;">
+						
+						<!-- <input class="btn btn-default" style="width: 200px;"  value="立刻登录" type="submit"/> --> <button id="sbumit_button" type="button" class="btn btn-default" style="width: 200px;">立刻登录</button> 
+						<br><br><br>
+						<a href="register_xs.jsp" style="margin-left: 31px;">注    册</a>
+							
+						</span>
+					</div>
+				</form>
+		
 	</div>
+
 </body>
 </html>
