@@ -66,7 +66,7 @@
 <body>
 <div class="body_div"
 		style="height: 550px; background-image: url('resources/img/bg.jpg');">
-		<!-- 			<div class="form_div" style=" background-color:aliceblue ;height:420px ;width:346px;"> -->
+	 			<div class="form_div" style=" background-color:aliceblue ;height:420px ;width:346px;"> -->
 		<form id="form_login" class="form-horizontal" action="user_login.smvc"
 			method="post"
 			style="float: right; margin-top: 50px; margin-right: 180px; width: 346px; height: 450px;">
