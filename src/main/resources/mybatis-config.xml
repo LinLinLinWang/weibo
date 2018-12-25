@@ -5,9 +5,9 @@
     <!-- 别名定义 -->  
     <typeAliases>  
     
-        <typeAlias alias="account"  type="edu.grimm.entity.Account" />  
-         <typeAlias alias="acc_pro_re"  type="edu.grimm.entity.AccProRe" />  
-          <typeAlias alias="project"  type="edu.grimm.entity.Project" />  
+        <typeAlias alias="User"  type="edu.yuying.entity.User" />  
+         <typeAlias alias="RecordHistoricalChanges"  type="edu.yuying.entity.RecordHistoricalChanges" />  
+          <typeAlias alias="HistoryPostingRecord"  type="edu.yuying.entity.HistoryPostingRecord" />  
     </typeAliases>  
   
 </configuration>  

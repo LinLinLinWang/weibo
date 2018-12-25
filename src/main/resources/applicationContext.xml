@@ -13,7 +13,7 @@
     <!-- 使用注解式注入 -->    
     <context:annotation-config />    
     <!-- 自动扫描  所有类ioc托管-->    
-    <context:component-scan base-package="edu.grimm" />    
+    <context:component-scan base-package="edu.yuying" />    
 
     <!-- 导入DAO配置 -->    
     <import resource="spring-mybatis.xml"/>    
