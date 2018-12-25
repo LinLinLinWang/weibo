@@ -11,9 +11,9 @@
 
 
     <!-- 根据手机号和密码检索-->
-   <select id="queryUserByPhoneAndPassword" parameterType="String" timeout="5"   
-  statementType="PREPARED" >
-  select * from userinfo where phone=#{0} and upwd=#{1}
+   <select id="queryUserByPhoneAndPassword"  timeout="5"   
+  statementType="PREPARED" resultType="edu.yuying.entity.User" >
+  select * from userinfo where trim(phone)=#{0} and trim(upwd)=#{1}
 </select>
  
 

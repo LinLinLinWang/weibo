@@ -26,7 +26,7 @@
 	
 	<link rel="shortcut icon" href="favicon.ico">
 
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700,300' rel='stylesheet' type='text/css'>
+
 	
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/registe_loin_forget_animate.css">
@@ -41,6 +41,111 @@
 		
 		document.getElementById("randImage").src="code.jsp?"+Math.random();
 	}
+	function commit (){
+		var name,phone,password,code,repassword;
+		name=document.getElementById("name").value;
+		phone=document.getElementById("phone").value;
+		password=document.getElementById("password").value;
+		repassword=document.getElementById("repassword").value;
+		code=document.getElementById("code").value;
+	
+		if(name==""){name="无名氏"};
+		if(phone==""){alert("手机号不能为空");
+		return;
+		}
+		 if(phone==""){
+		    	alert("手机号不能为空");
+		    	return ; 
+
+		    }else{
+		    	
+		    	  var reg = /^1[3|4|5|7|8][0-9]{9}$/; //验证规则
+		    	  if(reg.test(phone)==false){
+		    		  alert("手机号格式不正确");
+		    		  return ; 
+		    	  } 
+		    	  }
+
+	
+			  
+		   if(password==""){
+			   alert("密码不能为空");
+			   return ; 
+		   }else{	 var regex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,16}');
+			
+			if(!regex.test(password)){
+				  alert("密码必须是8-16位字母数字特殊符号组合");
+				  return; 
+				
+			}
+
+			   if(repassword==""){
+				   alert("请再次输入密码");
+				   return ; 
+			   }else{ var regex = new RegExp('(?=.*[0-9])(?=.*[a-zA-Z])(?=.*[^a-zA-Z0-9]).{8,16}');
+				
+				if(!regex.test(repassword)){
+					  alert("密码必须是8-16位字母数字特殊符号组合");
+					  return; 
+					
+				}
+				   
+				   if(password!=repassword){
+					
+					  
+					   alert("两次密码不一致");
+					   return ; 
+				   }
+				   
+			   }
+		   }
+		   if(code==""){
+			   alert("请输入验证码");
+			   return ; 
+		   }
+		
+		
+	 $.ajax({ 
+
+			    data:{"name":name,"phone":phone,"password":password ,
+			  "code":code
+			    },
+			
+
+			    type:"POST", 
+			    async: false,
+
+			    dataType: 'json',
+
+			    url:"ajax/registe", 
+
+			    success:function(data){ 
+				  if(data.state==0){
+					  /**注册成功*/
+					  window.location.href="login_by_password.jsp";
+					  
+				  }  if(data.state==1){
+					  /**注册失败（原因未知）*/
+					  alert("该账号已被注册！");
+					  
+				  }  if(data.state==2){
+					  /**验证码错误*/
+					  alert("验证码错误");
+				  }
+
+	               
+			    },
+
+			     error:function(data){ 
+
+			    	    alert("后台故障，请稍等");
+
+			    }
+
+			    });  
+		
+	}
+	
 	
 	</script>
  
@@ -61,7 +166,7 @@
 					
 
 					<!-- Start Sign In Form -->
-					<form action="user/userList" method="post" class="fh5co-form animate-box" data-animate-effect="fadeIn">
+					<form action="#"  class="fh5co-form animate-box" data-animate-effect="fadeIn">
 						<h2>注册界面</h2>
 						<div class="form-group">
 							<div class="alert alert-success" role="alert">请仔细填写信息</div>
@@ -80,7 +185,7 @@
 						</div>
 						<div class="form-group">
 							<label for="re-password" class="sr-only">二次输入密码</label>
-							<input type="password" class="form-control" id="re-password" name="repassword" placeholder="再次输入密码" autocomplete="off">
+							<input type="password" class="form-control" id="repassword" name="repassword" placeholder="再次输入密码" autocomplete="off">
 						</div>
 						<div class="form-group">
 							<label for="code" class="sr-only">输入验证码</label>
@@ -89,10 +194,10 @@
 							
 						</div>
 						<div class="form-group">
-							<p>已经有账号了吗? <a href="index.html">那去登陆吧</a></p>
+							<p>已经有账号了吗? <a href="login_by_password.jsp">那去登陆吧</a></p>
 						</div> 
 						<div class="form-group">
-							<input type="submit" value="注册" class="btn btn-primary">
+							<input type="button" value="注册" class="btn btn-primary" onclick="commit();">
 						</div>
 					</form>
 					<!-- END Sign In Form -->

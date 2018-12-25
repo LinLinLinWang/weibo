@@ -84,6 +84,23 @@ public boolean user_exist(String phone) {
 	return true;
 	
 }
+
+/* (non-Javadoc)
+ * @see edu.yuying.service.UserService#user_exist(java.lang.String, java.lang.String)
+ */
+@Override
+public boolean user_exist(String phone, String pwd) {
+	// TODO Auto-generated method stub
+	//存在返回true 不存在返回false
+		if(null==quertUserDao.queryUserByPhoneAndPassword(phone, pwd)){
+			
+			System.err.println("不存在");
+			return false;
+			
+		}
+		System.err.println("存在");
+		return true;
+}
 	
 
 }
