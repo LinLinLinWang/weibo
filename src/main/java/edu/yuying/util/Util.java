@@ -7,6 +7,11 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import javax.resource.spi.RetryableUnavailableException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import sun.misc.BASE64Encoder;
 
 /**
@@ -33,6 +38,63 @@ public class Util {
 		 
 		 
 	 }
-	
-	
+	 //设置cookie
+	 public static void  setCookie (HttpServletRequest request, HttpServletResponse response,String cookiename,String content){
+		 String host = request.getServerName();
+		 System.out.println(cookiename+content);
+			Cookie cookie = new Cookie(cookiename, content); // 保存用户名到Cookie
+			cookie.setPath("/");
+			cookie.setDomain(host);
+			cookie.setMaxAge(99999999);
+			response.addCookie(cookie);
+
+			
+        }
+	 //查找cookie
+	 public static String  searchCookie (HttpServletRequest request, HttpServletResponse response,String cookiename){
+		 Cookie[] cookies = request.getCookies();
+		 String content=null;
+         //如果用户是第一次访问，那么得到的cookies将是null
+        if (cookies!=null) {
+           
+            for (int i = 0; i < cookies.length; i++) {
+              Cookie    cookie = cookies[i];
+                  if(cookiename.equals(cookie.getName())){
+                	  content=cookie.getValue();
+                  }else{
+                	  
+                  }
+                
+                  
+          
+            }
+            
+        }
+        return content;
+        }
+	 //cookie销毁
+	 public static void  deleteCookie (HttpServletRequest request, HttpServletResponse response,String cookiename){
+		 Cookie[] cookies = request.getCookies();
+		 String content=null;
+         //如果用户是第一次访问，那么得到的cookies将是null
+        if (cookies!=null) {
+           
+            for (int i = 0; i < cookies.length; i++) {
+              Cookie    cookie = cookies[i];
+                  if(cookiename.equals(cookie.getName())){
+                	 cookie.setMaxAge(0);
+                	 cookie.setValue(null);
+                	 response.addCookie(cookie);
+                  }else{
+                	  
+                  }
+                
+                  
+          
+            }
+            
+        }
+
+			
+        }
 }

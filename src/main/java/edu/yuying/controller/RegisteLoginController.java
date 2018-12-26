@@ -78,7 +78,7 @@ public class RegisteLoginController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		String phone = request.getParameter("phone");
 	    String pwd = request.getParameter("password");
-	
+	System.out.println("登陆密码"+pwd);
 		String state=request.getParameter("state");
 		if(!userServiceImp.user_exist(phone)){
 			//该账户尚未注册
@@ -87,7 +87,8 @@ public class RegisteLoginController {
 		
 			
 		}else{
-			if(!userServiceImp.user_exist(phone,pwd)){
+			System.out.println("密码加密后"+Util.md5(pwd));
+			if(!userServiceImp.user_exist(phone,Util.md5(pwd))){
 				//密码错误
 				map.put("state", 1);
 				
@@ -98,24 +99,23 @@ public class RegisteLoginController {
 				map.put("state", 2);
 				
 				//判断是否需要保存cookie
-				if("0"==state){
-					
+				System.out.println("state"+state);
+				if("0".equals(state)){
+					System.out.println("保存cookie");
 					//保存cookie
-					String host = request.getServerName();
-					Cookie cookie = new Cookie("SESSION_LOGIN_PHONE", phone); // 保存用户名到Cookie
-					cookie.setPath("/");
-					cookie.setDomain(host);
-					cookie.setMaxAge(99999999);
-					response.addCookie(cookie);
-
-					cookie = new Cookie("SESSION_LOGIN_PASSWORD",Util.md5(pwd));
-					cookie.setPath("/");
-					cookie.setDomain(host);
-					cookie.setMaxAge(99999999);
-					response.addCookie(cookie);
+					Util.setCookie(request, response, "session_name", phone);
+					Util.setCookie(request, response, "session_password", Util.md5(pwd));
+					System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
+					System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
 					
-				}else{
+				}else{//为了防止登录漏洞 默认登录不保存密码  视为清除cookie
+					System.out.println("清楚cookie");
+					//对同一个request进行操作
+					Util.deleteCookie(request, response, "session_name");
+					Util.deleteCookie(request, response, "session_password");
 					
+					System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
+					System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
 					
 					
 				}
