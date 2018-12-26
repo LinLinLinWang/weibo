@@ -64,7 +64,7 @@
 	});
 </head>
 <body>
-<div class="body_div" style=" height:550px;background-image: url('resources/img/bg.jpg'); ">
+	<div class="body_div" style=" height:550px;background-image: url('resources/img/bg.jpg'); ">
 	<form id="form_login" class="form-horizontal"  action="user_login.smvc" method="post" style="float: right;margin-top:50px; margin-right: 180px;width: 346px; height: 450px;">
 					<span class="heading">用户登录</span>
 					<div class="form-group">
