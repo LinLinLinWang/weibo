@@ -1,6 +1,7 @@
 
 package edu.yuying.entity;
 
+import java.math.BigInteger;
 import java.sql.Timestamp;
 /**
 * @author 王林
@@ -15,6 +16,7 @@ import java.sql.Timestamp;
  */
 
 public class RecordHistoricalChanges {
+	private   BigInteger id;//在谁的说说下？
 	private String sendPhone;
 	private String receivePhone;
     private	String Content;
@@ -24,6 +26,18 @@ public class RecordHistoricalChanges {
 	 */
 	public String getSendPhone() {
 		return sendPhone;
+	}
+	/**
+	 * @return the id
+	 */
+	public BigInteger getId() {
+		return id;
+	}
+	/**
+	 * @param id the id to set
+	 */
+	public void setId(BigInteger id) {
+		this.id = id;
 	}
 	/**
 	 * @param sendPhone the sendPhone to set

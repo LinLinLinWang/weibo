@@ -22,5 +22,6 @@ public interface QueryUserDao {
 	public User queryUserByPhone(String phone);
 	//根据用户手机号以及密码
 	public User queryUserByPhoneAndPassword(String phone,String password);
+	
 
 }

@@ -146,6 +146,15 @@ public int userPhoneUpdate(String phone, String newPhone) {
 	
 	return a;//a=0 更新失败 a=1更新成功 a=2 已经有账户啦
 }
+
+/* (non-Javadoc)
+ * @see edu.yuying.service.UserService#user_exist_returnUser(java.lang.String)
+ */
+@Override
+public User user_exist_returnUser(String phone) {
+	// TODO Auto-generated method stub
+	return quertUserDao.queryUserByPhone(phone);
+}
 	
 
 }

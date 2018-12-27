@@ -112,7 +112,7 @@
 
 			    dataType: 'json',
 
-			    url:"ajax/getPhoneCode", 
+			    url:"ajax/getRgistePhoneCode", 
 
 			    success:function(data){ 
 				  if(data.state==1){
@@ -138,7 +138,7 @@
 					    setTimeout(function(){
 					    code.attr("disabled",false).val("重新获取验证码");
 					    clearInterval(set);
-					    }, 60000);
+					    }, 1000000);
 				  }
 
 	               

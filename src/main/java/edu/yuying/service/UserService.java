@@ -11,12 +11,15 @@ public interface UserService {
 	public boolean registeUser(User user);
    //用户是否已经存在 根据phone
 	public boolean user_exist(String phone);
+	//返回用户 
+	public User user_exist_returnUser(String phone);
 	//用户是否存在  根据phone 密码
 	public boolean user_exist(String phone,String pwd);
 	//用户修改信息
 	public boolean  userUpdate(User user);
 	//用户修改手机号
 	public int  userPhoneUpdate(String phone,String newPhone);
+
 
 	 
 }

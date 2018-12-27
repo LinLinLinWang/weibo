@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >    
+<mapper namespace="edu.yuying.dao.ChatWithPeople" >   
+
+    <!-- 根据手机号查看自己的聊天记录-->
+    <select id="chatToalHistory" parameterType="String" timeout="5"   
+  statementType="PREPARED"  resultMap="ChatWithPeopleResultMap3">
+        select * from chatwithpeople where sendphone =#{fromephone}
+    </select>
+    <resultMap type="User" id="ChatWithPeopleResultMap3">
+        <id property="phone" column="SendPhone"/>
+ <collection property="chatWithPeople" ofType="ChatWithPeople">
+            <id property="ReceivePhone" column="ReceivePhone"/>
+             <id property="SendPhone" column="SendPhone"/>
+              <id property="time" column="time"/>
+              
+            <result property="Content" column="Content"/>
+        </collection>
+    </resultMap>
+
+     
+  
+
+      
+</mapper>  

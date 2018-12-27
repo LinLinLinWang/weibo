@@ -3,6 +3,10 @@
  */
 package edu.yuying.entity;
 
+
+
+import java.util.List;
+
 import javax.persistence.Entity;
 
 /**
@@ -27,6 +31,18 @@ public class User {
  private String uphoto;
  private  int uage;
  private String Uconnect;
+ //一个用户多次发表帖子
+ private List<HistoryPostingRecord> historyPosingRecord;
+ //一个用户发表的评论
+ private List<RecordHistoricalChanges> recordHistoricalChanges;
+ //一个用户的聊天记录
+ private List<ChatWithPeople> chatWithPeople;
+ 
+ 
+ 
+ 
+ 
+ 
 /**
  * @return the uconnect
  */

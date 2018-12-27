@@ -11,6 +11,9 @@
         <typeAlias alias="User"  type="edu.yuying.entity.User" />  
          <typeAlias alias="RecordHistoricalChanges"  type="edu.yuying.entity.RecordHistoricalChanges" />  
           <typeAlias alias="HistoryPostingRecord"  type="edu.yuying.entity.HistoryPostingRecord" />  
+   
+     <typeAlias alias="ChatWithPeople"  type="edu.yuying.entity.ChatWithPeople" />  
+   
     </typeAliases>  
  
 </configuration>  
