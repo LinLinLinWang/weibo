@@ -26,6 +26,19 @@ public class User {
  private String ugender;
  private String uphoto;
  private  int uage;
+ private String Uconnect;
+/**
+ * @return the uconnect
+ */
+public String getUconnect() {
+	return Uconnect;
+}
+/**
+ * @param uconnect the uconnect to set
+ */
+public void setUconnect(String uconnect) {
+	Uconnect = uconnect;
+}
 /**
  * @return the phone
  */

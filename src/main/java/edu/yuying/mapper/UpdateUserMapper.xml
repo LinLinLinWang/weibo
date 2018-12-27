@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >    
+<mapper namespace="edu.yuying.dao.UpdateUserDao" >   
+
+<update id="upadeUserInfo" parameterType="User">
+        update userinfo
+        <set>
+            <if test="memberName != null">phone=#{phone},</if>
+            <if test="memberAccount != null">uname=#{userName},</if>
+            <if test="address != null">upwd=#{pwd},</if>
+            <if test="sex != null">ugender=#{ugender},</if>
+            <if test="memberAccount != null">uphoto=#{uphoto},</if>
+            <if test="address != null">uage=#{uage}</if>
+        </set>
+        where phone=#{phone}
+</update>
+
+<!-- 修改手机号 -->
+  <update id="updateStudent">  
+        UPDATE userinfo  
+            SET phone=#{1}  
+         WHERE phone={0}  
+</update>
+
+</mapper>  	

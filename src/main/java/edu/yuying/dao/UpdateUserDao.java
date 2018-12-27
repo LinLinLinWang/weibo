@@ -2,6 +2,9 @@
  * 
  */
 package edu.yuying.dao;
+
+import edu.yuying.entity.User;
+
 /**
 * @author 王林
 * @englishname:Grimm
@@ -15,6 +18,9 @@ package edu.yuying.dao;
  */
 
 public interface UpdateUserDao {
-	
+	//更新图片 
+	int upadeUserInfo(User user);
+	//更新手机号
+	int upadeUserPhone(String phone,String afterPhone);
 
 }

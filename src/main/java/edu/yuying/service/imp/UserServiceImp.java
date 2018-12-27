@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import edu.yuying.dao.QueryUserDao;
 import edu.yuying.dao.RegisteDao;
+import edu.yuying.dao.UpdateUserDao;
 import edu.yuying.entity.User;
 import edu.yuying.service.UserService;
 @Service
@@ -18,6 +19,8 @@ public class UserServiceImp implements UserService {
   RegisteDao registeDao;
   @Resource
   QueryUserDao quertUserDao;
+  @Resource
+  UpdateUserDao updateUserDao;
 	/* (non-Javadoc)
 	 * @see edu.grimm.service.UserService#registeUser(edu.grimm.entity.User)
 	 */
@@ -100,6 +103,48 @@ public boolean user_exist(String phone, String pwd) {
 		}
 		System.err.println("存在");
 		return true;
+}
+
+/* (non-Javadoc)
+ * @see edu.yuying.service.UserService#userUpdate(edu.yuying.entity.User)
+ */
+/**
+ * 
+ * 用户信息修改
+ * */
+@Override
+public boolean userUpdate(User user) {
+	// TODO Auto-generated method stub
+int a=	updateUserDao.upadeUserInfo(user);
+	if(a==1){
+		 return true;
+	}
+	return false;
+}
+
+/* (non-Javadoc)
+ * @see edu.yuying.service.UserService#userPhoneUpdate(java.lang.String, java.lang.String)
+ */
+/**
+ * 
+ * 用户手机更改
+ * */
+
+@Override
+public int userPhoneUpdate(String phone, String newPhone) {
+	int a=0;
+	// TODO Auto-generated method stub
+	if(user_exist(newPhone)){
+		//要插入的手机号已被注册
+		a=2;
+}else{
+	
+			a=updateUserDao.upadeUserPhone(phone, newPhone);
+		
+		
+	}
+	
+	return a;//a=0 更新失败 a=1更新成功 a=2 已经有账户啦
 }
 	
 

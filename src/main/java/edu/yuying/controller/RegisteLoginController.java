@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import edu.yuying.entity.User;
 import edu.yuying.service.imp.UserServiceImp;
+import edu.yuying.util.PhoneCode;
 import edu.yuying.util.Util;
 
 @Controller
@@ -27,7 +28,39 @@ import edu.yuying.util.Util;
 public class RegisteLoginController {
 	@Resource
 	private UserServiceImp userServiceImp;
+	@RequestMapping("ajax/getPhoneCode")
+	public @ResponseBody Map<String, Object> getPhoneCode(HttpServletRequest request, HttpServletResponse response)
+			throws UnsupportedEncodingException, NoSuchAlgorithmException {
+		String phone=request.getParameter("phone");
+		System.out.println(phone);
+		Map<String, Object> map = new HashMap<String, Object>();
+		if(userServiceImp.user_exist(phone)){
+			//用户已经注册
+			map.put("state", 1);
+			return map;
+		}
+	
+		if(null==PhoneCode.getCode(request, response, phone)){
+			//获取验证码失败
+			
+			map.put("state", 0);
+			return map;
+		
+			
+		} else{
+			//成功
+			String phonecode=""+request.getSession().getAttribute("phonecode");
+			System.out.println("发送的验证码为"+phonecode);
+			
+			map.put("state", 2);
+			return map;
+			
+		}
+		
+		
+	
 
+	}
 
 	@RequestMapping("ajax/registe")
 	public @ResponseBody Map<String, Object> registe(HttpServletRequest request, HttpServletResponse response)
@@ -40,7 +73,9 @@ public class RegisteLoginController {
 		String username = request.getParameter("name");
 		String code=request.getParameter("code");
 		//获取session中的验证码session.setAttribute("randStr", ranString);
-	   String trueCode=(String) request.getSession().getAttribute("randStr");
+		
+	     String trueCode=""+request.getSession().getAttribute("phonecode");
+	
 	   if(code.equalsIgnoreCase(trueCode)){
 		   System.out.println("验证码正确");
 			User user=new User();
@@ -48,6 +83,7 @@ public class RegisteLoginController {
 	        //MD5加密、
 			user.setPwd(Util.md5(pwd));
 			user.setUserName(username);
+			user.setUconnect(Util.md5(phone));
 		if(userServiceImp.registeUser(user)){
 		   map.put("state", 0);//注册成功
 	       return  map;
