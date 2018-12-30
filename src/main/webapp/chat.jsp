@@ -4,7 +4,7 @@
 <html style="height:100%;background-color:skyblue">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>聊天界面</title>
+<title>聊天界面展现</title>
 </head>
 <body style="height:100% ">
   <div id="main" style="width:60%;height: 60%;background-color: white;margin: auto;text-align:center">
