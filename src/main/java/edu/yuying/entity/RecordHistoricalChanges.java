@@ -21,12 +21,8 @@ public class RecordHistoricalChanges {
 	private String receivePhone;
     private	String Content;
     private Timestamp time;
-	/**
-	 * @return the sendPhone
-	 */
-	public String getSendPhone() {
-		return sendPhone;
-	}
+    private User fromuser;//一条回复就对应一个回复的人
+    private User touser;//一条回复就对应一个被回复的人
 	/**
 	 * @return the id
 	 */
@@ -38,6 +34,12 @@ public class RecordHistoricalChanges {
 	 */
 	public void setId(BigInteger id) {
 		this.id = id;
+	}
+	/**
+	 * @return the sendPhone
+	 */
+	public String getSendPhone() {
+		return sendPhone;
 	}
 	/**
 	 * @param sendPhone the sendPhone to set
@@ -81,6 +83,31 @@ public class RecordHistoricalChanges {
 	public void setTime(Timestamp time) {
 		this.time = time;
 	}
+	/**
+	 * @return the fromuser
+	 */
+	public User getFromuser() {
+		return fromuser;
+	}
+	/**
+	 * @param fromuser the fromuser to set
+	 */
+	public void setFromuser(User fromuser) {
+		this.fromuser = fromuser;
+	}
+	/**
+	 * @return the touser
+	 */
+	public User getTouser() {
+		return touser;
+	}
+	/**
+	 * @param touser the touser to set
+	 */
+	public void setTouser(User touser) {
+		this.touser = touser;
+	}
+	
     
 }
 

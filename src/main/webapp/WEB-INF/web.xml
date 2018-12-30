@@ -6,8 +6,9 @@
     <display-name>Archetype Created Web Application</display-name>    
         
     <welcome-file-list>    
-        <welcome-file>registe.jsp</welcome-file>    
+        <welcome-file>ajax/index.mvc</welcome-file>    
     </welcome-file-list>    
+        
         
     <!-- 加载spring bean -->    
     <context-param>    
@@ -47,7 +48,7 @@
     <servlet-mapping>    
         <servlet-name>SpringMVC</servlet-name>    
         <!-- 1.*.action 2./	所有访问的地址  -->
-        <url-pattern>/</url-pattern>    
+        <url-pattern>*.mvc</url-pattern>    
     </servlet-mapping>    
         
 </web-app>  

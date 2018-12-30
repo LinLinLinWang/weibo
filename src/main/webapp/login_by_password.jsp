@@ -111,7 +111,7 @@
 
 			    dataType: 'json',
 
-			    url:"ajax/login_by_password", 
+			    url:"ajax/login_by_password.mvc", 
 			    
 
 			    success:function(data){ 
@@ -126,6 +126,9 @@
 				  }  if(data.state==2){
 					
 					  alert("登录成功");
+				  } if(data.state==3){
+					
+					  alert("你账号已被管理员注销");
 				  }
 
 	               

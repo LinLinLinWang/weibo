@@ -25,35 +25,24 @@ import javax.persistence.Entity;
 public class User {
 	
  private String phone;
- private String userName;
- private String pwd;
+ private String uName;
+ private String upwd;
  private String ugender;
  private String uphoto;
  private  int uage;
  private String Uconnect;
- //一个用户多次发表帖子
- private List<HistoryPostingRecord> historyPosingRecord;
- //一个用户发表的评论
- private List<RecordHistoricalChanges> recordHistoricalChanges;
- //一个用户的聊天记录
- private List<ChatWithPeople> chatWithPeople;
- 
- 
- 
- 
- 
- 
+ private int Ustate;
 /**
- * @return the uconnect
+ * @return the ustate
  */
-public String getUconnect() {
-	return Uconnect;
+public int getUstate() {
+	return Ustate;
 }
 /**
- * @param uconnect the uconnect to set
+ * @param ustate the ustate to set
  */
-public void setUconnect(String uconnect) {
-	Uconnect = uconnect;
+public void setUstate(int ustate) {
+	Ustate = ustate;
 }
 /**
  * @return the phone
@@ -68,28 +57,28 @@ public void setPhone(String phone) {
 	this.phone = phone;
 }
 /**
- * @return the userName
+ * @return the uName
  */
-public String getUserName() {
-	return userName;
+public String getuName() {
+	return uName;
 }
 /**
- * @param userName the userName to set
+ * @param uName the uName to set
  */
-public void setUserName(String userName) {
-	this.userName = userName;
+public void setuName(String uName) {
+	this.uName = uName;
 }
 /**
- * @return the pwd
+ * @return the upwd
  */
-public String getPwd() {
-	return pwd;
+public String getUpwd() {
+	return upwd;
 }
 /**
- * @param pwd the pwd to set
+ * @param upwd the upwd to set
  */
-public void setPwd(String pwd) {
-	this.pwd = pwd;
+public void setUpwd(String upwd) {
+	this.upwd = upwd;
 }
 /**
  * @return the ugender
@@ -127,7 +116,20 @@ public int getUage() {
 public void setUage(int uage) {
 	this.uage = uage;
 }
+/**
+ * @return the uconnect
+ */
+public String getUconnect() {
+	return Uconnect;
+}
+/**
+ * @param uconnect the uconnect to set
+ */
+public void setUconnect(String uconnect) {
+	Uconnect = uconnect;
+}
 
+ 
   
 
 }

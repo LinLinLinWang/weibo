@@ -5,21 +5,22 @@
 <update id="upadeUserInfo" parameterType="User">
         update userinfo
         <set>
-            <if test="memberName != null">phone=#{phone},</if>
-            <if test="memberAccount != null">uname=#{userName},</if>
-            <if test="address != null">upwd=#{pwd},</if>
-            <if test="sex != null">ugender=#{ugender},</if>
-            <if test="memberAccount != null">uphoto=#{uphoto},</if>
-            <if test="address != null">uage=#{uage}</if>
+            <if test="phone != null">phone=#{phone},</if>
+            <if test="uName != null">uname=#{uName},</if>
+            <if test="upwd != null">upwd=#{upwd},</if>
+            <if test="ugender != null">ugender=#{ugender},</if>
+            <if test="uphoto != null">uphoto=#{uphoto},</if>
+            <if test="uage != null">uage=#{uage}</if>
         </set>
         where phone=#{phone}
 </update>
 
+
 <!-- 修改手机号 -->
-  <update id="updateStudent">  
+  <update id="upadeUserPhone">  
         UPDATE userinfo  
             SET phone=#{1}  
-         WHERE phone={0}  
+         WHERE phone=#{0}  
 </update>
 
 </mapper>  	

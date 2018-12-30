@@ -22,8 +22,9 @@ public class HistoryPostingRecord {
   private BigInteger id;
   private String phone;
   private String content;
-  private  String  contentType;
+  private  int  contentType;
   private Timestamp time;
+  private User user; //一条记录对用一个发表的人
 /**
  * @return the id
  */
@@ -63,13 +64,13 @@ public void setContent(String content) {
 /**
  * @return the contentType
  */
-public String getContentType() {
+public int getContentType() {
 	return contentType;
 }
 /**
  * @param contentType the contentType to set
  */
-public void setContentType(String contentType) {
+public void setContentType(int contentType) {
 	this.contentType = contentType;
 }
 /**
@@ -84,7 +85,18 @@ public Timestamp getTime() {
 public void setTime(Timestamp time) {
 	this.time = time;
 }
-  
-	
+/**
+ * @return the user
+ */
+public User getUser() {
+	return user;
+}
+/**
+ * @param user the user to set
+ */
+public void setUser(User user) {
+	this.user = user;
+}
+
 	
 }

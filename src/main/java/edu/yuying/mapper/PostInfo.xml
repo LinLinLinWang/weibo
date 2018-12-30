@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >    
+<mapper namespace="edu.yuying.dao.PostInfoDao" >   
+
+   <resultMap type="HistoryPostingRecord" id="historyPostingRecordResult">
+
+		<id property="id" column="id" />
+
+	<result property="phone" column="phone" />
+	<result property="Content" column="Content" />
+
+		<result property="contenttype" column="contenttype" />
+		<association property="user" column="phone" select="getUserInfoByphone" />
+	</resultMap>
+	<resultMap type="User" id="user_usertable">
+
+
+		<id property="phone" column="phone" />
+
+		<result property="userName" column="uname" />
+
+
+		<result property="pwd" column="upwd" />
+		<result property="ugender" column="ugender" />
+		<result property="uphoto" column="uphtoto" />
+		<result property="uage" column="uage" />
+
+		<result property="Uconnect" column="Content" />
+	
+	</resultMap>
+
+	<select id="getUserInfoByphone" parameterType="java.lang.String"
+		resultMap="user_usertable">select * from userinfo where Phone = #{phone}
+	</select>
+
+
+	<!--返回所有你发过的说说 -->
+	<select id="showPostByPhone" parameterType="String"
+		timeout="5" statementType="PREPARED" resultMap="historyPostingRecordResult">
+		select
+	*
+		from historypostingrecord where phone =#{phone}
+	</select>
+
+	<!-- 根据手机号以及类型区分 -->
+	<select id="showPostByPhoneByState"  timeout="5"
+		statementType="PREPARED" resultMap="historyPostingRecordResult">
+		select
+	*
+		from historypostingrecord where phone =#{0} and contenttype=#{1}
+	</select>
+
+	<!-- 查看时间段内聊天记录 -->
+	<select id="showPostByPhoneAndTime" parameterType="String" timeout="5"
+		statementType="PREPARED" resultMap="historyPostingRecordResult">
+		select
+		*
+		from historypostingrecord where time &gt;=#{1}and
+		time&lt;#{2} and phone=#{0}
+	</select>
+	
+
+
+	<!-- 插入數據 -->
+  <insert id="insertPost" parameterType="HistoryPostingRecord" timeout="5"   flushCache="true"
+  statementType="PREPARED">insert into historypostingrecord (phone, content,contenttype,time)values (#{phone}, #{content}, #{contentType},#{time})
+ </insert>
+	
+ 
+      
+</mapper>  

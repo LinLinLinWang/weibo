@@ -199,7 +199,12 @@
     <version>2.0.0.Alpha1</version>
 </dependency>
       
-        
+        <!-- https://mvnrepository.com/artifact/org.springframework/spring-websocket -->
+<dependency>
+    <groupId>org.springframework</groupId>
+    <artifactId>spring-websocket</artifactId>
+    <version>4.3.8.RELEASE</version>
+</dependency>
   </dependencies>
 
   <build>

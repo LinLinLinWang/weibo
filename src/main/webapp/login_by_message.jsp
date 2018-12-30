@@ -71,7 +71,7 @@
 
 			    dataType: 'json',
 
-			    url:"ajax/getLoginPhoneCode", 
+			    url:"ajax/getLoginPhoneCode.mvc", 
 
 			    success:function(data){ 
 				  if(data.state==1){
@@ -170,7 +170,7 @@ var	state=0;
 
 			    dataType: 'json',
 
-  url:"ajax/login_by_message", 
+  url:"ajax/login_by_message.mvc", 
 			    
 
 			    success:function(data){ 
@@ -185,6 +185,9 @@ var	state=0;
 				  }  if(data.state==2){
 					
 					  alert("登录成功");
+				  }if(data.state==3){
+					
+					  alert("你的账号已被管理员注销");
 				  }
 
 	               

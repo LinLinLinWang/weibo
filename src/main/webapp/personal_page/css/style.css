@@ -14495,8 +14495,9 @@ button.bg-dark:focus {
 }
 
 .d-flex, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.dropdown .navbar-dropdown .dropdown-item, .navbar .navbar-menu-wrapper .navbar-nav .nav-item.nav-profile .nav-link, .navbar.horizontal-boxed-layout-navbar .navbar-top, .navbar.horizontal-full-width-layout-navbar .navbar-top, .navbar.horizontal-full-width-layout-navbar .navbar-top .navbar-menu-wrapper .navbar-nav .nav-item, .navbar.horizontal-full-width-layout-navbar .navbar-top .navbar-menu-wrapper .navbar-nav .nav-item .nav-link, .navbar.horizontal-full-width-layout-navbar .navbar-bottom, .navbar.horizontal-full-width-layout-navbar .navbar-bottom .page-title-wrapper, .page-header {
-  display: flex !important;
+  display: flex;
 }
+
 
 .d-inline-flex {
   display: inline-flex !important;

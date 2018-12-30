@@ -5,6 +5,7 @@ package edu.yuying.dao;
 
 import java.util.List;
 
+import edu.yuying.entity.HistoryPostingRecord;
 import edu.yuying.entity.RecordHistoricalChanges;
 import edu.yuying.entity.User;
 
@@ -22,14 +23,14 @@ import edu.yuying.entity.User;
 //
 public interface CommentDao {
 	//根据评论人手机号返回所有评论  显示你给谁评论过 // 内容 ：被评论者的姓名，内容，时间
-	public List<User> commentWhoAndContentAndTime(String fromphone);
+	public List<HistoryPostingRecord> commentWhoAndContentAndTime(String fromphone);
 	
-	//根据评论人的手机号 查看历史发表记录 根据图片 视频 文字进行区分
-	public List<User> postSomeThing(String phone);
+	//根据评论人的手机号 以及类型区分
+	public List<HistoryPostingRecord> postSomeThing(String phone,int type);
     //根据评论人时间 指定时间  指定时间段
-	public List<User> postSomeThingByTime(String startTime,String endtime);
+	public List<HistoryPostingRecord> postSomeThingByTime(String startTime,String endtime,String  phone);
 	//插入评论记录
-	int insertRecordHistoricalChanges(RecordHistoricalChanges recordHistoricalChanges);
+	int inserPost(HistoryPostingRecord HistoryPostingRecord);
 	
 
 }

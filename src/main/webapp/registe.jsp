@@ -112,7 +112,7 @@
 
 			    dataType: 'json',
 
-			    url:"ajax/getRgistePhoneCode", 
+			    url:"ajax/getRgistePhoneCode.mvc", 
 
 			    success:function(data){ 
 				  if(data.state==1){
@@ -239,7 +239,7 @@
 
 			    dataType: 'json',
 
-			    url:"ajax/registe", 
+			    url:"ajax/registe.mvc", 
 
 			    success:function(data){ 
 				  if(data.state==0){

@@ -26,7 +26,7 @@ import com.github.qcloudsms.httpclient.HTTPException;
  */
 
 public class PhoneCode {
-	public static  String  getCode(HttpServletRequest request, HttpServletResponse response,String phone){
+	public static  String  getCode(HttpServletRequest request, HttpServletResponse response,String phone,String namecontent){
 String flag=null;
    int appid = 1400086573;
         String appkey = "8251f605677bef6805bca1df9c4a4d63";
@@ -56,8 +56,8 @@ String flag=null;
         }
 	
 		return flag;*/
-      
-        request.getSession().setAttribute("phonecode", code);
+        System.out.println(code);
+        request.getSession().setAttribute(namecontent, code);
         
          flag="success";
     

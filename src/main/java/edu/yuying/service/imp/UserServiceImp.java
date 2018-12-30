@@ -153,7 +153,13 @@ public int userPhoneUpdate(String phone, String newPhone) {
 @Override
 public User user_exist_returnUser(String phone) {
 	// TODO Auto-generated method stub
-	return quertUserDao.queryUserByPhone(phone);
+	 User user=new User();
+	 user=quertUserDao.queryUserByPhone(phone);
+	 if(null==user){
+		 System.out.println("用户为空");
+		 
+	 }
+	return user;
 }
 	
 

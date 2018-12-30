@@ -20,13 +20,13 @@ import edu.yuying.entity.User;
  *
  */
 
-public interface PostInfo {
+public interface PostInfoDao {
 	//查看自己上传过的所有
-   public List<User> showPost(String phone);
-   //查看指定类型的说说
-   public List<User> showPost(String phone,int  state);
+   public List<HistoryPostingRecord> showPostByPhone(String phone);
+   //查看指定类型的说说HistoryPostingRecord
+   public List<HistoryPostingRecord> showPostByPhoneByState(String phone,int  state);
    //查看自己指定时间的说说
-   public List<User> showPost(String starttime,String   endtime);
+   public List<HistoryPostingRecord> showPostByPhoneAndTime(String phone,String starttime,String   endtime);
    //插入
    int  insertPost(HistoryPostingRecord historyPostingRecord);
    

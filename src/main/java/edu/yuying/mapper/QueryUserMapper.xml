@@ -5,14 +5,14 @@
     <!-- 根据手机号检索-->
    <select id="queryUserByPhone" parameterType="String" timeout="5"   
   statementType="PREPARED" resultType="edu.yuying.entity.User">
-  select phone as phone,uname as userName,upwd as pwd,ugender as ugender,uphoto as uphoto,uage as uage,uconnect as Uconnect from userinfo where phone=#{phone}
+  select * from userinfo where phone=#{phone}
 </select>
 
 
     <!-- 根据手机号和密码检索-->
    <select id="queryUserByPhoneAndPassword"  timeout="5"   
   statementType="PREPARED" resultType="edu.yuying.entity.User" >
-  select phone as phone,uname as userName,upwd as pwd,ugender as ugender,uphoto as uphoto,uage as uage,uconnect as Uconnect  from userinfo where phone=#{0}
+  select  *  from userinfo where phone=#{0}
   and upwd=#{1} 
         
 </select>

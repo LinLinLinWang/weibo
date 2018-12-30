@@ -30,7 +30,7 @@ import edu.yuying.util.Util;
 public class RegisteLoginController {
 	@Resource
 	private UserServiceImp userServiceImp;
-	@RequestMapping("ajax/getRgistePhoneCode")
+	@RequestMapping("ajax/getRgistePhoneCode.mvc")
 	public @ResponseBody Map<String, Object> getPhoneCode(HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		String phone=request.getParameter("phone");
@@ -42,7 +42,7 @@ public class RegisteLoginController {
 			return map;
 		}
 	
-		if(null==PhoneCode.getCode(request, response, phone)){
+		if(null==PhoneCode.getCode(request, response, phone,"phonecode")){
 			//获取验证码失败
 			
 			map.put("state", 0);
@@ -64,7 +64,7 @@ public class RegisteLoginController {
 
 	}
 
-	@RequestMapping("ajax/registe")
+	@RequestMapping("ajax/registe.mvc")
 	public @ResponseBody Map<String, Object> registe(HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		//编码
@@ -83,8 +83,8 @@ public class RegisteLoginController {
 			User user=new User();
 		    user.setPhone(phone);
 	        //MD5加密、
-			user.setPwd(Util.md5(pwd));
-			user.setUserName(username);
+			user.setUpwd(Util.md5(pwd));
+			user.setuName(username);
 			user.setUconnect(Util.md5(phone));
 		if(userServiceImp.registeUser(user)){
 		   map.put("state", 0);//注册成功
@@ -108,7 +108,7 @@ public class RegisteLoginController {
                  * 
                  * */
 
-	@RequestMapping("ajax/getLoginPhoneCode")
+	@RequestMapping("ajax/getLoginPhoneCode.mvc")
 	public @ResponseBody Map<String, Object> getLoginPhoneCode(HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		String phone=request.getParameter("phone");
@@ -121,7 +121,7 @@ public class RegisteLoginController {
 			return map;
 		}
 	
-		if(null==PhoneCode.getCode(request, response, phone)){
+		if(null==PhoneCode.getCode(request, response, phone,"phonecode")){
 			//获取验证码失败
 			
 			map.put("state", 0);
@@ -132,7 +132,8 @@ public class RegisteLoginController {
 			//成功
 			String phonecode=""+request.getSession().getAttribute("phonecode");
 			System.out.println("发送的验证码为"+phonecode);
-			
+		//	request.getSession().setAttribute("userphone",phone);
+		//	request.getSession().setAttribute("userpwd",userServiceImp.user_exist_returnUser(phone).getUpwd());
 			map.put("state", 2);
 			return map;
 			
@@ -146,7 +147,7 @@ public class RegisteLoginController {
 	
 	
 	
-	@RequestMapping("ajax/login_by_password")
+	@RequestMapping("ajax/login_by_password.mvc")
 	public @ResponseBody Map<String, Object> login_by_password(HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		//编码
@@ -170,34 +171,47 @@ public class RegisteLoginController {
 				
 				
 				
-			}else{
-				request.getSession().setAttribute("userphone",phone);
-				request.getSession().setAttribute("userpwd",Util.md5(pwd));
-				//登录成功
-				map.put("state", 2);
-				
-				//判断是否需要保存cookie
-				System.out.println("state"+state);
-				if("0".equals(state)){
-					System.out.println("保存cookie");
-					//保存cookie
-					Util.setCookie(request, response, "session_name", phone);
-					Util.setCookie(request, response, "session_password", Util.md5(pwd));
-					System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
-					System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
+			}else{ 
+				//判断状态  0 正常    1  管理员   2注销
+				if(userServiceImp.user_exist_returnUser(phone).getUstate()==2){
+					map.put("state",3);
+           
 					
-				}else{//为了防止登录漏洞 默认登录不保存密码  视为清除cookie
-					System.out.println("清楚cookie");
-					//对同一个request进行操作
-					Util.deleteCookie(request, response, "session_name");
-					Util.deleteCookie(request, response, "session_password");
+				}else{
+
 					
-					System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
-					System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
+					
+					request.getSession().setAttribute("userphone",phone);
+					request.getSession().setAttribute("userpwd",Util.md5(pwd));
+					//登录成功
+					map.put("state", 2);
+					
+					//判断是否需要保存cookie
+					System.out.println("state"+state);
+					if("0".equals(state)){
+						System.out.println("保存cookie");
+						//保存cookie
+						Util.setCookie(request, response, "session_name", phone);
+						Util.setCookie(request, response, "session_password", Util.md5(pwd));
+						System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
+						System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
+						
+					}else{//为了防止登录漏洞 默认登录不保存密码  视为清除cookie
+						System.out.println("清楚cookie");
+						//对同一个request进行操作
+						Util.deleteCookie(request, response, "session_name");
+						Util.deleteCookie(request, response, "session_password");
+						
+						System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
+						System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
+						
+						
+					}
 					
 					
 				}
 				
+			
 				
 				
 				
@@ -213,7 +227,7 @@ public class RegisteLoginController {
 	  
 
 	}
-	@RequestMapping("ajax/login_by_message")
+	@RequestMapping("ajax/login_by_message.mvc")
 	public @ResponseBody Map<String, Object> login_by_message(HttpServletRequest request, HttpServletResponse response)
 			throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		//编码
@@ -240,36 +254,56 @@ public class RegisteLoginController {
 				
 				
 			}else{
-				request.getSession().setAttribute("userphone",phone);
-				System.out.println("采用短信登陸的人的賬戶"+phone);
-				User user=userServiceImp.user_exist_returnUser(phone);
 				
-				System.out.println("采用短信登陸的人的密碼"+user.getPwd());
-				request.getSession().setAttribute("userpwd",user.getPwd());
-				//登录成功
-				map.put("state", 2);
 				
-				//判断是否需要保存cookie
-				System.out.println("state"+state);
-				if("0".equals(state)){
-					System.out.println("保存cookie");
-					//保存cookie
-					Util.setCookie(request, response, "session_name", phone);
-					Util.setCookie(request, response, "session_password", Util.md5(userServiceImp.user_exist_returnUser(phone).getPwd()));
-					System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
-					System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
-					
-				}else{//为了防止登录漏洞 默认登录不保存密码  视为清除cookie
-					System.out.println("清楚cookie");
-					//对同一个request进行操作
-					Util.deleteCookie(request, response, "session_name");
-					Util.deleteCookie(request, response, "session_password");
-					
-					System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
-					System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
-					
-					
-				}
+				
+				   if(2==(userServiceImp.user_exist_returnUser(phone).getUstate())){
+					   //已被注销
+					   map.put("state", 3);
+					   
+				   }else{
+						
+						
+						
+						
+						
+						
+						
+						request.getSession().setAttribute("userphone",phone);
+						System.out.println("采用短信登陸的人的賬戶"+phone);
+						User user=userServiceImp.user_exist_returnUser(phone);
+						
+						System.out.println("采用短信登陸的人的密碼"+user.getUpwd());
+						request.getSession().setAttribute("userpwd",user.getUpwd());
+						//登录成功
+						map.put("state", 2);
+						
+						//判断是否需要保存cookie
+						System.out.println("state"+state);
+						if("0".equals(state)){
+							System.out.println("保存cookie");
+							//保存cookie
+							Util.setCookie(request, response, "session_name", phone);
+							Util.setCookie(request, response, "session_password", Util.md5(userServiceImp.user_exist_returnUser(phone).getUpwd()));
+							System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
+							System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
+							
+						}else{//为了防止登录漏洞 默认登录不保存密码  视为清除cookie
+							System.out.println("清楚cookie");
+							//对同一个request进行操作
+							Util.deleteCookie(request, response, "session_name");
+							Util.deleteCookie(request, response, "session_password");
+							
+							System.out.println("cookie"+Util.searchCookie(request,response,"session_name"));
+							System.out.println("cookie"+Util.searchCookie(request,response,"session_password"));
+							
+							
+						}
+				   }
+				
+				
+				
+			
 				
 				
 				
