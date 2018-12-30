@@ -15,6 +15,8 @@
             <img alt="" src="userPhoto/2.jpg">
             
         <a href="ajax/turn_personal.mvc">跳转个人中心</a>
+             <a href="ajax/deletePosting.mvc?id=7">删除帖子</a>
+       
         
         
         

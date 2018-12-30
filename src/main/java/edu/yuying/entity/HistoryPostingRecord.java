@@ -19,7 +19,7 @@ import java.sql.Timestamp;
  */
 
 public class HistoryPostingRecord {
-  private BigInteger id;
+  private long id;
   private String phone;
   private String content;
   private  int  contentType;
@@ -28,13 +28,13 @@ public class HistoryPostingRecord {
 /**
  * @return the id
  */
-public BigInteger getId() {
+public long getId() {
 	return id;
 }
 /**
  * @param id the id to set
  */
-public void setId(BigInteger id) {
+public void setId(long id) {
 	this.id = id;
 }
 /**

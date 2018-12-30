@@ -3,6 +3,7 @@
  */
 package edu.yuying.service.imp;
 
+import java.math.BigInteger;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -65,6 +66,15 @@ PostInfoDao postInfoDao;
 	public int insertPost(HistoryPostingRecord historyPostingRecord) {
 		// TODO Auto-generated method stub
 		return postInfoDao.insertPost(historyPostingRecord);
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.yuying.service.HistoryPostingRecordService#deletePostingById(int)
+	 */
+	@Override
+	public int deletePostingById(long id) {
+		// TODO Auto-generated method stub
+		return postInfoDao.deletePost(id);
 	}
 
 }

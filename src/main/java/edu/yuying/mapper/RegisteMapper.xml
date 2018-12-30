@@ -16,7 +16,7 @@
 	
 	 	</selectKey>
 	 
-  insert into userinfo(phone,uname,upwd,uconnect) values(#{phone},#{uName}, #{upwd},#{uconnect})
+  insert into userinfo(phone,uname,upwd,uconnect) values(#{phone},#{uName}, #{upwd},#{Uconnect})
 </insert>
 
 

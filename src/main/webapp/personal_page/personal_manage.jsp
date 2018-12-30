@@ -22,6 +22,13 @@
 <link rel="stylesheet" href="../personal_page/css/style.css">
 <!-- endinject -->
 <link rel="shortcut icon" href="../personal_page/images/favicon.png" />
+<!-- 上传头像-->
+
+
+
+<script src="/ssm_grimm/js/jquery.min.js" type="text/javascript"></script>
+
+
 
 <!-- plugins:js -->
 <script src="../personal_page/vendors/js/vendor.bundle.base.js"></script>
@@ -35,6 +42,156 @@
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="../personal_page/js/dashboard.js"></script>
+
+
+
+<!-- 获取验证码 -->
+	<script type="text/javascript">
+	function getnewphoneCode(){
+		var  newphone=$("#newphone").val();
+		alert(newphone);
+		 if(newphone==""){
+		    	alert("手机号不能为空");
+		    	return ; 
+
+		    }else{
+		    	
+		    	  var reg = /^1[3|4|5|7|8][0-9]{9}$/; //验证规则
+		    	  if(reg.test(newphone)==false){
+		    		  alert("手机号格式不正确");
+		    		  return ; 
+		    	  } 
+		    	  }
+		 
+		 $.ajax({ 
+
+			    data:{"phone":newphone
+			    },
+			
+
+			    type:"POST", 
+			    async: false,
+
+			    dataType: 'json',
+
+			    url:"/ssm_grimm/ajax/getupdatePhoneCode.mvc", 
+
+			    success:function(data){ 
+				  if(data.state==0){
+					  /**用户未变*/
+					 alert("此账号为原账号");
+					
+					  
+				  }  if(data.state==1){
+					//已被注册
+					alert("改手机号已被注册");
+					  
+				  }  if(data.state==2){
+					 //收到验证码
+					  var phone= $("#newphone");
+					  phone.attr("disabled","disabled");
+					  var code = $("#phonecode");
+					  code.attr("disabled","disabled");
+					    setTimeout(function(){
+					    	code.css("opacity","0.8");
+					    },1000)
+					    var time =1000;
+					    var set=setInterval(function(){
+					    code.val("("+--time+")秒后重新获取");
+					    }, 1000);
+					    setTimeout(function(){
+					    code.attr("disabled",false).val("重新获取验证码");
+					    clearInterval(set);
+					    }, 1000000);
+				  }
+
+	               
+			    },
+
+			     error:function(data){ 
+
+			    	    alert("后台故障，请稍等");
+
+			    }
+
+			    });  
+		
+		 
+		 
+		
+		
+		
+	}
+	
+
+	</script>
+	
+	
+	
+	
+	
+	
+	
+	
+	<script type="text/javascript">
+   		   function commtinewPhoneUpdate(){
+   			
+			var newphone=$("#newphone").val()
+			var code=$("#code").val()
+			
+			 
+			 $.ajax({ 
+
+				    data:{"phone":newphone,"code":code
+				    },
+				
+
+				    type:"POST", 
+				    async: false,
+
+				    dataType: 'json',
+
+				    url:"/ssm_grimm/ajax/updatePhone.mvc", 
+
+				    success:function(data){ 
+					  if(data.state==0){
+						  /**用户未变*/
+						 alert("修改成功");
+						  window.location="\/ssm_grimm/ajax/index.mvc"
+						
+						  
+					  }  if(data.state==1){
+						//已被注册
+						alert("修改失败（原因未知）");
+						  
+					  }  if(data.state==2){
+						 //收到验证码
+						alert("验证码错误");
+					  }
+
+		               
+				    },
+
+				     error:function(data){ 
+
+				    	    alert("后台故障，请稍等");
+
+				    }
+
+				    });  
+   		  
+   		   
+   		   }
+
+		
+
+	</script>
+	
+	
+	
+	
+	
+
 <script type="text/javascript">
 	window.onload = function() {
 		var now = new Date();
@@ -99,6 +256,7 @@ alert("你是卵细胞？？？");
 				if (data.state  == 5) {
 					alert("更改手机号");
 					$("#personalinfo").attr("style","display:none");
+					$("#changephone").show();
 				
 					
 
@@ -114,6 +272,20 @@ alert("你是卵细胞？？？");
 
 	}
 </script>
+
+
+<!-- 调出photo -->
+<script type="text/javascript">
+function getPhoto(){
+	$("#personalinfo").attr("style","display:none");
+	$("#changephooto").show();
+	
+	
+	
+}
+
+</script>
+
 
 
 <!-- websocket -->
@@ -386,7 +558,7 @@ label {
 				</a>
 					<div class="collapse" id="general-pages">
 						<ul class="nav flex-column sub-menu">
-							<li class="nav-item"><a class="nav-link" href="#">删用户</a></li>
+							<li class="nav-item"><a class="nav-link" href="/ssm_grimm/ajax/getUserList.mvc">删用户</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">删帖</a></li>
 							<li class="nav-item"><a class="nav-link" href="#">发送推送消息</a></li>
 
@@ -410,9 +582,9 @@ label {
 							<!-- Table goes in the document BODY -->
 							<table class="altrowstable" id="alternatecolor">
 								<tr>
-									<th>头像</th>
-									<th><img src="../userPhoto/${userdetail.phone}.jpg" alt="默认 头像"
-								onerror="this.src='../userPhoto/default.jpg'" style="height: 10%"></th>
+									<th>头像(点击修改)</th>
+									<th><img onclick="getPhoto()" src="../userPhoto/${userdetail.phone}.jpg" alt="默认 头像"
+								onerror="this.src='../userPhoto/default.jpg'" style="height: 10%;"></th>
 								</tr>
 								<tr>
 									<td>姓名</td>
@@ -474,9 +646,9 @@ label {
 
   ========================================================================================
 
-					<div style="width: 100%; height: 100%; text-align: center"
+					<div style="width: 100%; height: 100%; text-align: center; display:none"
 						id="changephone">
-						<div id="nowphone">当前手机号:${userdetail.phone}</div>
+					
 						
 						
 							<!-- Table goes in the document BODY -->
@@ -505,6 +677,18 @@ label {
 
 ================================================================================
 
+ ========================================================================================
+
+					<div style="width: 100%; height: 100%; text-align: center;display:none"
+						id="changephooto">
+
+                           <iframe src="../uploadphoto.jsp" style="width: 100%;height: 100%   ;frameborder:no;scrolling : no" >
+
+					</div>
+
+
+					================================================================================
+
 
 
 				</div>
@@ -524,151 +708,6 @@ label {
 		<!-- page-body-wrapper ends -->
 	</div>
 	<!-- container-scroller -->
-	<!-- 获取验证码 -->
-	<script type="text/javascript">
-	function getnewphoneCode(){
-		var  newphone=$("#newphone").val();
-		alert(newphone);
-		 if(newphone==""){
-		    	alert("手机号不能为空");
-		    	return ; 
-
-		    }else{
-		    	
-		    	  var reg = /^1[3|4|5|7|8][0-9]{9}$/; //验证规则
-		    	  if(reg.test(newphone)==false){
-		    		  alert("手机号格式不正确");
-		    		  return ; 
-		    	  } 
-		    	  }
-		 
-		 $.ajax({ 
-
-			    data:{"phone":newphone
-			    },
-			
-
-			    type:"POST", 
-			    async: false,
-
-			    dataType: 'json',
-
-			    url:"/ssm_grimm/ajax/getupdatePhoneCode.mvc", 
-
-			    success:function(data){ 
-				  if(data.state==0){
-					  /**用户未变*/
-					 alert("此账号为原账号");
-					
-					  
-				  }  if(data.state==1){
-					//已被注册
-					alert("改手机号已被注册");
-					  
-				  }  if(data.state==2){
-					 //收到验证码
-					  var phone= $("#newphone");
-					  phone.attr("disabled","disabled");
-					  var code = $("#phonecode");
-					  code.attr("disabled","disabled");
-					    setTimeout(function(){
-					    	code.css("opacity","0.8");
-					    },1000)
-					    var time =1000;
-					    var set=setInterval(function(){
-					    code.val("("+--time+")秒后重新获取");
-					    }, 1000);
-					    setTimeout(function(){
-					    code.attr("disabled",false).val("重新获取验证码");
-					    clearInterval(set);
-					    }, 1000000);
-				  }
-
-	               
-			    },
-
-			     error:function(data){ 
-
-			    	    alert("后台故障，请稍等");
-
-			    }
-
-			    });  
-		
-		 
-		 
-		
-		
-		
-	}
-	
-
-	</script>
-	
-	
-	
-	
-	
-	
-	
-	
-	<script type="text/javascript">
-   		   function commtinewPhoneUpdate(){
-   			
-			var newphone=$("#newphone").val()
-			var code=$("#code").val()
-			
-			 
-			 $.ajax({ 
-
-				    data:{"phone":newphone,"code":code
-				    },
-				
-
-				    type:"POST", 
-				    async: false,
-
-				    dataType: 'json',
-
-				    url:"/ssm_grimm/ajax/updatePhone.mvc", 
-
-				    success:function(data){ 
-					  if(data.state==0){
-						  /**用户未变*/
-						 alert("修改成功");
-						  window.location="\/ssm_grimm/ajax/index.mvc"
-						
-						  
-					  }  if(data.state==1){
-						//已被注册
-						alert("修改失败（原因未知）");
-						  
-					  }  if(data.state==2){
-						 //收到验证码
-						alert("验证码错误");
-					  }
-
-		               
-				    },
-
-				     error:function(data){ 
-
-				    	    alert("后台故障，请稍等");
-
-				    }
-
-				    });  
-   		  
-   		   
-   		   }
-
-		
-
-	</script>
-	
-	
-	
-	
 	
 	
 	

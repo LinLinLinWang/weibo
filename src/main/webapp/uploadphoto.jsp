@@ -75,7 +75,7 @@
 		</div>
 		
 	</div>
-</div>
+
 <script type="text/javascript">
 
 //上传封面
@@ -128,7 +128,7 @@ var clipArea = new bjj.PhotoClip("#clipArea", {
   		    url:"ajax/uploadimage.mvc", 
 
   		    success:function(data){ 
-  	  		   window.location.href="test.jsp";
+  		    	window.parent.location.href='ajax/turn_personal.mvc';
                    
   		    },
 

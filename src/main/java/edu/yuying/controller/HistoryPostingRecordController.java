@@ -1,5 +1,6 @@
 package edu.yuying.controller;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
@@ -77,7 +78,23 @@ public class HistoryPostingRecordController {
 		return map;
 
 	}
-
+//根据id删帖
+	@RequestMapping(value = "ajax/deletePosting.mvc")
+	public @ResponseBody Map<String, Object>  deleteUser(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		response.setContentType("text/html");
+		Map<String, Object> map = new HashMap<String, Object>();
+		String id=request.getParameter("id");
+		System.out.println("帖子"+id);
+	if(1==historyPostingRecordServiceImp.deletePostingById(Long.parseLong(id))){		
+		//删除成功
+		
+	}else{
+		
+	}
+		
+		return  map;
+		}
 		
 	
 

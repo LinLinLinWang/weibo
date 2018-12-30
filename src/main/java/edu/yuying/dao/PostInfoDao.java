@@ -5,6 +5,8 @@ package edu.yuying.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import edu.yuying.entity.HistoryPostingRecord;
 import edu.yuying.entity.User;
 
@@ -29,6 +31,7 @@ public interface PostInfoDao {
    public List<HistoryPostingRecord> showPostByPhoneAndTime(String phone,String starttime,String   endtime);
    //插入
    int  insertPost(HistoryPostingRecord historyPostingRecord);
+   int  deletePost(long id);
    
     
 }

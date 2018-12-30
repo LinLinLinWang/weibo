@@ -3,6 +3,9 @@
  */
 package edu.yuying.dao;
 
+
+import java.util.List;
+
 import edu.yuying.entity.User;
 
 /**
@@ -22,6 +25,9 @@ public interface QueryUserDao {
 	public User queryUserByPhone(String phone);
 	//根据用户手机号以及密码
 	public User queryUserByPhoneAndPassword(String phone,String password);
-	
+	//
+	public List<User> queryALlUser();
+	//根据用户手机号以及密码
+	public User user_exist_returnUser_byCOnnect(String connect);
 
 }

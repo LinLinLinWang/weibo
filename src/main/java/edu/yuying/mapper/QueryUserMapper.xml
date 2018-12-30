@@ -16,9 +16,18 @@
   and upwd=#{1} 
         
 </select>
+    <!-- 所有用户-->
+ <select id="queryALlUser"  timeout="5"   
+  statementType="PREPARED" resultType="edu.yuying.entity.User" >
+  select  *  from userinfo 
+        </select>
  
-  
-<!-- phone as phone,uname as userName,upwd as pwd,ugender as ugender,uphoto as uphoto,uage as uag -->
+    <!-- 根据connect检索-->
+   <select id="user_exist_returnUser_byCOnnect" parameterType="String" timeout="5"   
+  statementType="PREPARED" resultType="edu.yuying.entity.User">
+  select * from userinfo where uconnect=#{connect}
+</select>
+
  
       
 </mapper>  

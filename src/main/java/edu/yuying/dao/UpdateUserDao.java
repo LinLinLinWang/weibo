@@ -22,5 +22,7 @@ public interface UpdateUserDao {
 	int upadeUserInfo(User user);
 	//更新手机号
 	int upadeUserPhone(String phone,String afterPhone);
+	//更新手机号
+	int upadeUserByUconncrt(User user);
 
 }

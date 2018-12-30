@@ -30,5 +30,7 @@ public List<HistoryPostingRecord> showHistoryPost(String fromphone);
 	public List<HistoryPostingRecord> postPostByTime(String phone,String startTime ,String endtime  );
 	//插入评论记录
 	int insertPost(HistoryPostingRecord historyPostingRecord);
+	//删除某条记录
+	int deletePostingById(long id);
 
 }

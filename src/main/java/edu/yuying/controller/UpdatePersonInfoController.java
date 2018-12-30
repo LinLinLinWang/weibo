@@ -56,7 +56,17 @@ public class UpdatePersonInfoController {
 		//System.out.println("裁剪后图片数据" + imgcontent);
 		
 		String t = Thread.currentThread().getContextClassLoader().getResource("").getPath();
-		String  path_webapp=t.substring(0,t.length()-16)+"userPhoto/2.jpg";
+		 String  usernamefromcookie=Util.searchCookie(request, response, "session_name");
+		
+		String sessioname=(String)request.getSession().getAttribute("userphone");
+			String  photoname=null;
+			if(null==usernamefromcookie){
+				photoname=sessioname;
+				
+			}else{
+				photoname=sessioname;
+			}
+		String  path_webapp=t.substring(0,t.length()-16)+"userPhoto/"+photoname+".jpg";
 		Photo.base64StrToImage(imgcontent, path_webapp);
        
 
@@ -317,6 +327,97 @@ public class UpdatePersonInfoController {
 		
 		
 		
-	}
+	}//获取所有用户
+	@RequestMapping(value = "ajax/getUserList.mvc")
+	public @ResponseBody ModelAndView  getUserList(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		response.setContentType("text/html");
+		ModelAndView mode=new ModelAndView();
+		List<User> userslist=userServiceImp.queryAlLUser();
+		mode.setViewName("/userlist");
+		mode.addObject("userlist", userslist);
+		return mode;
+			
+			
+			
+		}
+	
+	@RequestMapping(value = "ajax/deleteUser.mvc")
+	public @ResponseBody Map<String, Object>  deleteUser(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		response.setContentType("text/html");
+		Map<String, Object> map = new HashMap<String, Object>();
+		String connect=request.getParameter("connect");
+		System.out.println(connect);
+		User user=userServiceImp.user_exist_returnUser_byCOnnect(connect);
+		if(user.getUstate()!=2){
+			user.setUstate(2);
+			System.out.println(user.getPhone());
+			String  nowphoneSession=Util.searchCookie(request, response, "session_name");
+			String nowphonecookie=(String)request.getSession().getAttribute("userphone");
+			if(user.getPhone().equals(nowphoneSession)||user.getPhone().equals(nowphonecookie)){
+				
+				//刪的是自己
+				map.put("state",0);
+				return map;
+				
+			}else{
+				
+				 if(userServiceImp.userUpdateByConnect(user)){
+					 map.put("state",1);
+					 return map;
+						
+				 
+				
+				 } else{//不成功
+					 map.put("state",2);
+					 return map;
+					 
+				 }
+					
+				
+			}
+		}
+		else{//要恢复
+			
+			user.setUstate(0);
+			System.out.println(user.getPhone());
+			String  nowphoneSession=Util.searchCookie(request, response, "session_name");
+			String nowphonecookie=(String)request.getSession().getAttribute("userphone");
+			if(user.getPhone().equals(nowphoneSession)||user.getPhone().equals(nowphonecookie)){
+				
+				//刪的是自己
+				map.put("state",0);
+				return map;
+				
+			}else{
+				
+				 if(userServiceImp.userUpdateByConnect(user)){
+					 map.put("state",3);
+					 return map;
+						
+				 
+				
+				 } else{//不成功
+					 map.put("state",4);
+					 return map;
+					 
+				 }
+					
+				
+			}
+			
+			
+		}
+		
+	
+			
+			
+		}
+	
+		
+		
+	
+	
 	
 }

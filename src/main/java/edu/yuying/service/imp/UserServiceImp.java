@@ -161,6 +161,36 @@ public User user_exist_returnUser(String phone) {
 	 }
 	return user;
 }
+
+/* (non-Javadoc)
+ * @see edu.yuying.service.UserService#queryAlLUser()
+ */
+@Override
+public List<User> queryAlLUser() {
+	// TODO Auto-generated method stub
+	return quertUserDao.queryALlUser();
+}
+
+/* (non-Javadoc)
+ * @see edu.yuying.service.UserService#userUpdateByCOnnect(edu.yuying.entity.User)
+ */
+@Override
+public boolean userUpdateByConnect(User user) {
+	// TODO Auto-generated method stub
+	if(1==updateUserDao.upadeUserByUconncrt(user)){
+		return true;
+	}
+	 return  false;
+}
+
+/* (non-Javadoc)
+ * @see edu.yuying.service.UserService#user_exist_returnUser_byCOnnect(java.lang.String)
+ */
+@Override
+public User user_exist_returnUser_byCOnnect(String connect) {
+	// TODO Auto-generated method stub
+	return quertUserDao.user_exist_returnUser_byCOnnect(connect);
+}
 	
 
 }

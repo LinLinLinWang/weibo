@@ -10,17 +10,34 @@
             <if test="upwd != null">upwd=#{upwd},</if>
             <if test="ugender != null">ugender=#{ugender},</if>
             <if test="uphoto != null">uphoto=#{uphoto},</if>
-            <if test="uage != null">uage=#{uage}</if>
+            <if test="uage != null">uage=#{uage},</if>
+            <if test="Ustate != null">ustate=#{Ustate},</if>
+            <if test="Uconnect != null">Uconnect=#{Uconnect}</if>
         </set>
         where phone=#{phone}
 </update>
+<!-- 刪除用戶 -->
 
+<update id="upadeUserByUconncrt" parameterType="User">
+        update userinfo
+        <set>
+            <if test="phone != null">phone=#{phone},</if>
+            <if test="uName != null">uname=#{uName},</if>
+            <if test="upwd != null">upwd=#{upwd},</if>
+            <if test="ugender != null">ugender=#{ugender},</if>
+            <if test="uphoto != null">uphoto=#{uphoto},</if>
+            <if test="uage != null">uage=#{uage},</if>
+            <if test="Ustate != null">ustate=#{Ustate},</if>         
+            <if test="Uconnect != null">uconnect=#{Uconnect}</if>
+        </set>
+        where UConnect=#{Uconnect}
+</update>
 
 <!-- 修改手机号 -->
   <update id="upadeUserPhone">  
         UPDATE userinfo  
             SET phone=#{1}  
-         WHERE phone=#{0}  
+         WHERE phone=#{0}    
 </update>
 
 </mapper>  	

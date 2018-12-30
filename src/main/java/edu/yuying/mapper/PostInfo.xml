@@ -25,7 +25,7 @@
 		<result property="uphoto" column="uphtoto" />
 		<result property="uage" column="uage" />
 
-		<result property="Uconnect" column="Content" />
+		<result property="Uconnect" column="Uconnect" />
 	
 	</resultMap>
 
@@ -66,6 +66,12 @@
   statementType="PREPARED">insert into historypostingrecord (phone, content,contenttype,time)values (#{phone}, #{content}, #{contentType},#{time})
  </insert>
 	
- 
+ <!-- 通过主键集合批量删除记录 -->
+
+<delete id="deletePost" parameterType="long">
+
+delete FROM historypostingrecord WHERE ID =#{id} 
+
+</delete>
       
 </mapper>  
