@@ -28,8 +28,12 @@
 
 <script src="/ssm_grimm/js/jquery.min.js" type="text/javascript"></script>
 
-
-
+	
+	
+	
+	
+	
+	
 <!-- plugins:js -->
 <script src="../personal_page/vendors/js/vendor.bundle.base.js"></script>
 <script src="../personal_page/vendors/js/vendor.bundle.addons.js"></script>
@@ -49,7 +53,7 @@
 	<script type="text/javascript">
 	function getnewphoneCode(){
 		var  newphone=$("#newphone").val();
-		alert(newphone);
+	
 		 if(newphone==""){
 		    	alert("手机号不能为空");
 		    	return ; 
@@ -125,6 +129,8 @@
 	
 
 	</script>
+	
+	
 	
 	
 	
@@ -289,6 +295,84 @@ function getPhoto(){
 
 
 <!-- websocket -->
+<script type="text/javascript">
+window.onload= function   line(){
+	var userphone = $("#userphone").text();
+alert(userphone);
+	if ('WebSocket' in window) {
+		websocket = new WebSocket(
+				"ws://localhost:8080/ssm_grimm/websocket/" + userphone);
+
+	} else {
+		alert('当前浏览器 Not support websocket')
+	}
+
+	websocket.onerror = function() {
+		alert("WebSocket连接发生错误");
+	};
+
+	websocket.onopen = function() {
+
+	}
+
+	websocket.onmessage = function(event) {
+		receive(event.data);
+
+	}
+
+	websocket.onclose = function() {
+
+	}
+
+	window.onbeforeunload = function() {
+
+	}
+	
+}
+		
+
+		function closeWebSocket() {
+
+		}
+
+		function receive(sendMessage) {
+			//$("#message0").remove;
+			alert(sendMessage);
+			var strs = new Array(); //定义一数组 
+			strs = sendMessage.split("用户手机号"); //字符分割 
+			var time = strs[0];
+			var strs1 = new Array(); //定义一数组 
+			strs1 = strs[1].split("用户名字"); //字符分割
+			var whosendyou = strs1[0];//手机号
+			var strs2 = new Array(); //定义一数组
+			strs2 = strs1[1].split("发来消息");
+			var name = strs2[0];
+			var content = strs2[1];
+
+			var numMessage = $("#who_send").children(".message").length;
+			if (numMessage - 1 == 0) {
+
+				$("#receiveTishi").removeAttr("style");
+			}
+
+			var newmessage = $("#message" + (numMessage - 1)).clone().attr(
+					'id', 'message' + numMessage).removeAttr("style");
+			newmessage.appendTo("#who_send");
+			//赋值
+			$("#message" + numMessage).find("img").attr('src',
+					'../userPhoto/' + whosendyou + '.jpg');
+			$("#message" + numMessage).find("img").attr('onerror',
+					'this.src="../userPhoto/default.jpg"');
+			$("#message" + numMessage).find("h8").text(name);
+			$("#message" + numMessage).find("h5").text(time);
+
+			var numMessage = $("#who_send").children(".message").length;
+
+			$("#messageNum").html(numMessage - 1);
+
+		}
+	</script>
+	
 
 <style type="text/css">
 table {
@@ -709,86 +793,7 @@ label {
 	</div>
 	<!-- container-scroller -->
 	
-	
-	
-	
-	
-	
-	
-	
-	<script type="text/javascript">
-		var userphone = $("#userphone").text();
 
-		if ('WebSocket' in window) {
-			websocket = new WebSocket(
-					"ws://localhost:8080/ssm_grimm/websocket/" + userphone);
-
-		} else {
-			alert('当前浏览器 Not support websocket')
-		}
-
-		websocket.onerror = function() {
-			alert("WebSocket连接发生错误");
-		};
-
-		websocket.onopen = function() {
-
-		}
-
-		websocket.onmessage = function(event) {
-			receive(event.data);
-
-		}
-
-		websocket.onclose = function() {
-
-		}
-
-		window.onbeforeunload = function() {
-
-		}
-
-		function closeWebSocket() {
-
-		}
-
-		function receive(sendMessage) {
-			//$("#message0").remove;
-			alert(sendMessage);
-			var strs = new Array(); //定义一数组 
-			strs = sendMessage.split("用户手机号"); //字符分割 
-			var time = strs[0];
-			var strs1 = new Array(); //定义一数组 
-			strs1 = strs[1].split("用户名字"); //字符分割
-			var whosendyou = strs1[0];//手机号
-			var strs2 = new Array(); //定义一数组
-			strs2 = strs1[1].split("发来消息");
-			var name = strs2[0];
-			var content = strs2[1];
-
-			var numMessage = $("#who_send").children(".message").length;
-			if (numMessage - 1 == 0) {
-
-				$("#receiveTishi").removeAttr("style");
-			}
-
-			var newmessage = $("#message" + (numMessage - 1)).clone().attr(
-					'id', 'message' + numMessage).removeAttr("style");
-			newmessage.appendTo("#who_send");
-			//赋值
-			$("#message" + numMessage).find("img").attr('src',
-					'../userPhoto/' + whosendyou + '.jpg');
-			$("#message" + numMessage).find("img").attr('onerror',
-					'this.src="../userPhoto/default.jpg"');
-			$("#message" + numMessage).find("h8").text(name);
-			$("#message" + numMessage).find("h5").text(time);
-
-			var numMessage = $("#who_send").children(".message").length;
-
-			$("#messageNum").html(numMessage - 1);
-
-		}
-	</script>
 </body>
 
 </html>
