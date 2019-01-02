@@ -32,6 +32,7 @@
         padding-top: 3px;
         padding-bottom: 3px;
         margin-bottom: 5px;
+        border-radius: 11px;
     }
     .td_menu a:hover{
         color: palevioletred;
@@ -53,21 +54,21 @@
                 <a id="a_designation" href="index.jsp">育婴</a><!--网站名称-->
             </div>
             <table style="float:right">
-                <tr style="height:15px;margin-top:30px; display:block;">
+                <tr style="height:15px;margin-top:30px;display:block;">
                     <td><a class="a_basic" href="">昵称</a></td>
                     <td><a class="a_basic" href="">个人中心</a></td>
                     <td><a class="a_basic" href="">消息</a></td>
-                    <td><a class="a_basic" href="">注册</a></td>
-                    <td><a class="a_basic" href="">登录/注销</a></td>
+                    <td><a class="a_basic" href="register.jsp">注册</a></td>
+                    <td><a class="a_basic" href="login_by_password.jsp">登录</a><a class="a_basic" href="">注销</a></td>
                 </tr>
             </table>
         </div>
         <div style="width:980px;height:46px;background:palevioletred"><!--头部下框-->
             <table>
-                <tr style="display:block;height:46px;">
-                    <td style="margin-left:20px;" class="td_menu"><a class="a_menu" href="">首页</a></td>
+                <tr style="display:block;height:46px;margin-left:15px;">
+                    <td class="td_menu"><a class="a_menu" href="index.jsp">首页</a></td>
                     <td class="td_menu"><a class="a_menu" href="">帖子中心</a></td>
-                    <td class="td_menu"><a class="a_menu" href="">发帖子</a></td>
+                    <td class="td_menu"><a class="a_menu" href="review.jsp">发帖子</a></td>
                     <td class="td_menu"><a class="a_menu" href="">我的帖子</a></td>
                 </tr>
             </table>
