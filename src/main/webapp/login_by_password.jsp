@@ -180,7 +180,7 @@
 							<label for="remember"><input type="checkbox" id="remember" checked value="0" >记住本次登录</label>
 						</div>
 						<div class="form-group">
-							<p>没有账号? <a href="registe.jsp">注册</a> | <a href="forgot.html">忘记密码？</a></p>
+							<p>没有账号? <a href="register.jsp">注册</a> | <a href="forgot.html">忘记密码？</a></p>
 						</div>
 						<div class="form-group">
 							<input type="button" value="登录" class="btn btn-primary" onclick="commit()">
