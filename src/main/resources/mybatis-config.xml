@@ -12,7 +12,9 @@
          <typeAlias alias="RecordHistoricalChanges"  type="edu.yuying.entity.RecordHistoricalChanges" />  
           <typeAlias alias="HistoryPostingRecord"  type="edu.yuying.entity.HistoryPostingRecord" />  
    
-     <typeAlias alias="ChatWithPeople"  type="edu.yuying.entity.ChatWithPeople" />  
+     <typeAlias alias="ChatWithPeople"  type="edu.yuying.entity.ChatWithPeople" /> 
+        
+     <typeAlias alias="HotPosting"  type="edu.yuying.entity.HotPosting" />  
    
     </typeAliases>  
  

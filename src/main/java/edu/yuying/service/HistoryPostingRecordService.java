@@ -5,7 +5,10 @@ package edu.yuying.service;
 
 import java.util.List;
 
+import com.mysql.cj.conf.HostInfo;
+
 import edu.yuying.entity.HistoryPostingRecord;
+import edu.yuying.entity.HotPosting;
 import edu.yuying.entity.RecordHistoricalChanges;
 import edu.yuying.entity.User;
 
@@ -32,5 +35,7 @@ public List<HistoryPostingRecord> showHistoryPost(String fromphone);
 	int insertPost(HistoryPostingRecord historyPostingRecord);
 	//删除某条记录
 	int deletePostingById(long id);
+	//查看热帖
+	   public List<HotPosting> showHotPosting();
 
 }

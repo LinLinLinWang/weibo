@@ -7,20 +7,24 @@
 		<id property="id" column="id" />
 
 	<result property="phone" column="phone" />
-	<result property="Content" column="Content" />
+	<result property="content" column="Content" />
 
-		<result property="contenttype" column="contenttype" />
+		<result property="contentType" column="contenttype" />
 		<association property="user" column="phone" select="getUserInfoByphone" />
+	
+	<collection property="reviewList" ofType="RecordHistoricalChanges" column="id" select="getReviewlist">
+			
+		</collection>
 	</resultMap>
 	<resultMap type="User" id="user_usertable">
 
 
 		<id property="phone" column="phone" />
 
-		<result property="userName" column="uname" />
+		<result property="uName" column="uname" />
 
 
-		<result property="pwd" column="upwd" />
+		<result property="upwd" column="upwd" />
 		<result property="ugender" column="ugender" />
 		<result property="uphoto" column="uphtoto" />
 		<result property="uage" column="uage" />
@@ -31,6 +35,9 @@
 
 	<select id="getUserInfoByphone" parameterType="java.lang.String"
 		resultMap="user_usertable">select * from userinfo where Phone = #{phone}
+	</select>
+	<select id="getReviewlist" 
+		resultType="RecordHistoricalChanges">select * from recordsofhistoricalexchanges where id = #{id}
 	</select>
 
 
@@ -73,5 +80,12 @@
 delete FROM historypostingrecord WHERE ID =#{id} 
 
 </delete>
+ <!-- 显示热帖 -->
+ <select id="showHotPosting" timeout="5"
+		statementType="PREPARED" resultType="HotPosting">
+	select a.id,a.content,COUNT(b.id)as num from historypostingrecord a,recordsofhistoricalexchanges b where a.id=b.id GROUP BY(b.id)
+	</select>
+	
+
       
 </mapper>  

@@ -23,6 +23,14 @@ public class RecordHistoricalChanges {
     private Timestamp time;
     private User fromuser;//一条回复就对应一个回复的人
     private User touser;//一条回复就对应一个被回复的人
+    //一条帖子对应着一条原文章
+    private HistoryPostingRecord historyPostingRecord;
+	public HistoryPostingRecord getHistoryPostingRecord() {
+		return historyPostingRecord;
+	}
+	public void setHistoryPostingRecord(HistoryPostingRecord historyPostingRecord) {
+		this.historyPostingRecord = historyPostingRecord;
+	}
 	/**
 	 * @return the id
 	 */

@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 
 import edu.yuying.entity.HistoryPostingRecord;
+import edu.yuying.entity.HotPosting;
 import edu.yuying.entity.User;
 
 /**
@@ -32,6 +33,7 @@ public interface PostInfoDao {
    //插入
    int  insertPost(HistoryPostingRecord historyPostingRecord);
    int  deletePost(long id);
-   
+   //查看热帖
+   public List<HotPosting> showHotPosting();
     
 }

@@ -10,7 +10,7 @@
   <a href="ajax/chattotalhistory.mvc?phone=15964245533">点击</a>
     <a href="ajax/chatWithWho.mvc?phone=15964245533">点击查看他自己跟谁聊托</a>
     
-        <a href="ajax/insertPostingHistory.mvc?type=0&&content=1">发表文章</a>
+        <a href="ajax/insertPostingHistory.mvc?type=0&&content=dsflkjklhhhjk开始觉得很难接受的回复你菊花更多脚后跟ijdaghkjhagndjg已经打过风格化急啊个回归疾风">发表文章</a>
             <a href="ajax/uploadimage.mvc">图片发布地址</a>
             <img alt="" src="userPhoto/2.jpg">
             

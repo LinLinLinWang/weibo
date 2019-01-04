@@ -5,6 +5,7 @@ package edu.yuying.entity;
 
 import java.math.BigInteger;
 import java.sql.Timestamp;
+import java.util.List;
 
 /**
 * @author 王林
@@ -25,6 +26,13 @@ public class HistoryPostingRecord {
   private  int  contentType;
   private Timestamp time;
   private User user; //一条记录对用一个发表的人
+  private List<RecordHistoricalChanges> reviewList;
+public List<RecordHistoricalChanges> getReviewList() {
+	return reviewList;
+}
+public void setReviewList(List<RecordHistoricalChanges> reviewList) {
+	this.reviewList = reviewList;
+}
 /**
  * @return the id
  */

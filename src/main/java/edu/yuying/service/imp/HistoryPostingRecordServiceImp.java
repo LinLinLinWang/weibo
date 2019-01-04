@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import edu.yuying.dao.CommentDao;
 import edu.yuying.dao.PostInfoDao;
 import edu.yuying.entity.HistoryPostingRecord;
+import edu.yuying.entity.HotPosting;
 import edu.yuying.entity.RecordHistoricalChanges;
 import edu.yuying.entity.User;
 
@@ -29,8 +30,8 @@ import edu.yuying.entity.User;
  */
 @Service
 public class HistoryPostingRecordServiceImp implements edu.yuying.service.HistoryPostingRecordService {
-@Resource
-PostInfoDao postInfoDao;
+	@Resource
+	PostInfoDao postInfoDao;
 	/* (non-Javadoc)
 	 * @see edu.yuying.service.HistoryPostingRecordService#showHistoryPost(java.lang.String)
 	 */
@@ -75,6 +76,13 @@ PostInfoDao postInfoDao;
 	public int deletePostingById(long id) {
 		// TODO Auto-generated method stub
 		return postInfoDao.deletePost(id);
+	}
+
+	@Override
+	public List<HotPosting> showHotPosting() {
+		// TODO Auto-generated method stub
+		return  postInfoDao.showHotPosting();
+		
 	}
 
 }
