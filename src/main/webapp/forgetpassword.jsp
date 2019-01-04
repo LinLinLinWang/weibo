@@ -78,7 +78,7 @@
 				</div>
 			</div>
 			<div class="row" style="padding-top: 60px; clear: both;">
-				<div class="col-md-12 text-center"><p><small>&copy; 育婴门户 </small></p></div>
+				<div class="col-md-12 text-center"><p><small>&copy; 育婴123123门户 </small></p></div>
 			</div>
 		</div>
 	
