@@ -64,7 +64,7 @@ public class UpdatePersonInfoController {
 				photoname=sessioname;
 				
 			}else{
-				photoname=sessioname;
+				photoname=usernamefromcookie;
 			}
 		String  path_webapp=t.substring(0,t.length()-16)+"userPhoto/"+photoname+".jpg";
 		Photo.base64StrToImage(imgcontent, path_webapp);

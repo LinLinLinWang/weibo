@@ -119,7 +119,8 @@ public class HistoryPostingRecordController {
 		// System.out.println(historyPostingRecord.getReviewList().get(0).getFromuser().getuName());
 	     ModelAndView mav = new ModelAndView();
 		mav.setViewName("/showpostdetail");
-	    mav.addObject("historyPostingRecord", historyPostingRecord);
+	    mav.addObject("historyPostingRecord",historyPostingRecord);
+	    mav.addObject("theam", historyPostingRecord.getContent().split("内容")[0]);
 		return  mav;
 		}
 		

@@ -4,6 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -97,7 +98,48 @@ public class ChatController {
 	
 
 	}
+	//turn  聊天界面
 	
+	@RequestMapping("ajax/turnChat.mvc")
+	public @ResponseBody 	ModelAndView turnChat(HttpServletRequest request, HttpServletResponse response)
+			throws UnsupportedEncodingException, NoSuchAlgorithmException {
+		String whosendu=request.getParameter("whosendu");
+		ModelAndView mav = new ModelAndView();
+		String  whoru=null;
+		mav.setViewName("/chat2");
+		Date start = Util.getNeedTime(0,0,0,0);
+	    Date end = Util.getNeedTime(23,59,59,0);
+	    Date now = new Date();
+	    if(now.getTime() >= start.getTime() && now.getTime() <= end.getTime()){
+	        System.out.println("当前时间在中间");
+	    }
+	    System.out.println(start);
+	    System.out.println(end);
+	    Timestamp starttime = new Timestamp(start.getTime());
+	    Timestamp endtime = new Timestamp(end.getTime());
+		//查出今天的聊天记录
+	List<ChatWithPeople>	listmessage=  chatServiceImp.showChatHistoryDuringTime(whosendu, starttime, endtime);
+		System.err.println("发送消息"+listmessage.get(0).getContent());
+		//
+		 String  usernamefromcookie=Util.searchCookie(request, response, "session_name");
+		//  String  passwordfromcookie= Util.searchCookie(request, response, "session_password");
+		String sessioname=(String)request.getSession().getAttribute("userphone");
+			//String sessionpassword=(String)request.getSession().getAttribute("userpwd");
+		mav.addObject("whosend", whosendu);
+		mav.addObject("listmessage", listmessage);
+		if(null==usernamefromcookie)whoru=sessioname;
+		if(null==sessioname)whoru=usernamefromcookie;
+		mav.addObject("whoru", whoru);
+		mav.addObject("whosenduname", userServiceImp.user_exist_returnUser(whosendu).getuName());
+		mav.addObject("yourname", userServiceImp.user_exist_returnUser(whoru).getuName());
+       return mav;
+			
+		
+		
+		
+	
+
+	}
 		
 		
 	

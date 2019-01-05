@@ -13,18 +13,24 @@
 		<association property="user" column="phone" select="getUserInfoByphone" />
 
 		<collection property="reviewList" ofType="RecordHistoricalChanges"
-			column="id" select="getReviewlist">
+			column="id" select="getReviewlist" />
 
-			<id property="id" column="id" />
-
-			<id property="sendPhone" column="SendPhone" />
-			<id property="receivePhone" column="ReceivePhone" />
-			<id property="time" column="time" />
-            <result property="content" column="Content" />
-			<association property="fromuser" column="SendPhone" select="getUserInfoByphone" />
-			<association property="touser" column="ReceivePhone" select="getUserInfoByphone" />
-		</collection>
+	
 	</resultMap>
+
+	<resultMap id="reviewListMap" type="RecordHistoricalChanges">
+		<id column="id" property="id" />
+		<id column="sendPhone" property="sendPhone" />
+		<id column="receivePhone" property="receivePhone" />
+		<result column="Content" property="Content" />
+		<result column="time" property="time" />
+
+		<association property="fromuser" column="sendPhone"
+			javaType="User" select="getUserInfoByphone" />
+		<association property="touser" column="receivePhone"
+			javaType="User" select="getUserInfoByphone" />
+	</resultMap>
+
 	<resultMap type="User" id="user_usertable">
 
 
@@ -45,10 +51,10 @@
 
 
 	<select id="getUserInfoByphone" parameterType="java.lang.String"
-		resultMap="user_usertable">select * from userinfo where Phone = #{phone}
+		resultMap="user_usertable">select * from userinfo where Phone = #{0}
 	</select>
-	<select id="getReviewlist" resultType="RecordHistoricalChanges">select * from
-		recordsofhistoricalexchanges where id = #{id}
+	<select id="getReviewlist" resultMap="reviewListMap">select * from
+		recordsofhistoricalexchanges where id = #{0}
 	</select>
 
 
@@ -57,7 +63,8 @@
 		statementType="PREPARED" resultMap="historyPostingRecordResult">
 		select
 		*
-		from historypostingrecord where phone =#{phone}
+		from historypostingrecord
+		where phone =#{phone}
 	</select>
 
 	<!-- 根据手机号以及类型区分 -->
@@ -65,7 +72,8 @@
 		resultMap="historyPostingRecordResult">
 		select
 		*
-		from historypostingrecord where phone =#{0} and contenttype=#{1}
+		from historypostingrecord where phone =#{0} and
+		contenttype=#{1}
 	</select>
 
 	<!-- 查看时间段内聊天记录 -->
@@ -92,14 +100,17 @@
 
 	<delete id="deletePost" parameterType="long">
 
-		delete FROM historypostingrecord WHERE ID =#{id}
+		delete FROM
+		historypostingrecord WHERE ID =#{id}
 
 	</delete>
 	<!-- 显示热帖 -->
 	<select id="showHotPosting" timeout="5" statementType="PREPARED"
 		resultType="HotPosting">
-		select a.id,a.content,COUNT(b.id)as num from historypostingrecord
-		a,recordsofhistoricalexchanges b where a.id=b.id GROUP BY(b.id)
+		select a.id,a.content,COUNT(b.id)as num from
+		historypostingrecord
+		a,recordsofhistoricalexchanges b where a.id=b.id
+		GROUP BY(b.id)
 	</select>
 	<!-- 显示指定id的帖子详情 -->
 	<select id="showPostById" timeout="5" statementType="PREPARED"

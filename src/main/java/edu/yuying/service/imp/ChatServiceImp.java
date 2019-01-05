@@ -3,6 +3,7 @@
  */
 package edu.yuying.service.imp;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -63,7 +64,7 @@ public class ChatServiceImp implements ChatService {
 	 */
 	//指定时间段内查看历史聊天
 	@Override
-	public List<ChatWithPeople> showChatHistoryDuringTime(String fromphone, String starttime, String endtime) {
+	public List<ChatWithPeople> showChatHistoryDuringTime(String fromphone, Timestamp starttime, Timestamp endtime) {
 		// TODO Auto-generated method stub
 		return chatWithPeopleDao.chatFromTimeToTime(fromphone, starttime, endtime);
 	}
