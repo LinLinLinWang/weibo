@@ -43,41 +43,53 @@ li a:hover:not(.active) {
 table,th,td
 {
 	border:0px solid black;
+	
+}
+#publish{
+width:900px;
+}
+#publish td{
+	
+		padding:3px 3px 3px 3px;
+		
 }
 .left{
-	width:100px;
+	width:60px;
 	}
+
 </style>
 </head>
 <body style="height: 100%;">
 <c:import url="template_navigator.jsp"></c:import>
 <div id="main1" style="width:80%;height:100%;background-color: #EAEAEA;margin: auto;text-align:center">
-	<div id="nav" style="float:left;">
+	<!-- <div id="nav" style="float:left;">
 	
 	<h2>妈妈帮</h2>
-
 		<ul>
 			<li><a class="active" href="#home">首页</a></li>
 			<li><a href="">1</a></li>
 			<li><a href="">联系</a></li>
 			<li><a href="">关于</a></li>
-			<li><a href="">新闻</a></li>
-			<li><a href="">联系</a></li>
-			<li><a href="">关于</a></li>
-			<li><a href="">新闻</a></li>
-			<li><a href="">联系</a></li>
-			<li><a href="">关于</a></li>
-			<li><a href="">新闻</a></li>
-			<li><a href="">联系</a></li>
-			<li><a href="">关于</a></li>
+
 		</ul>
-	</div>
-	<div class="text" style="margin-top:10px;width:200px;text-align:left; float:left;">
+	</div> -->
+	<div class="text" style="margin-left:100px;margin-top:10px;width:300px;text-align:left; float:left;">
 		<b>发帖</b>
-		<table>
+		
+		<table id="publish">
 			<tr>
 			<td class="left">标题：</td>
-				<td><input style="height:14px;width:730px;" /></td>
+				<td>
+					<input style="height:14px;width:640px;" />
+					<select>
+						<option value="">选择版块</option>
+						<option value="">1</option>
+						<option value="">2</option>
+						<option value="">3</option>
+						<option value="">4</option>
+						<option value="">5</option>
+					</select>
+				</td>
 			</tr>
 			<tr>
 			<td class="left">内容：</td>

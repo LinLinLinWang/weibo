@@ -210,7 +210,9 @@ $(function() {
 
 
 
+
 <div id="banner_tabs" class="flexslider" style="margin-right:auto;margin-left:auto;width:980px;">
+
 	<ul class="slides">
 		<li>
 			<a title="" target="_blank" href="#">
@@ -285,8 +287,10 @@ $(function() {
 										<th>热榜排名</th>
 										<th>热门话题</th>
 										
+
 										<th>评论数</th>
 									
+
 
 									</tr>
 								</thead>
