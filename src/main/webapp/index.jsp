@@ -150,7 +150,7 @@ $(function() {
 </div>
 
 
-<div id="banner_tabs" class="flexslider" style="width: 50%;text-align: center;">
+<div id="banner_tabs" class="flexslider" style="width: 72%;margin-right:auto;margin-left:auto;text-align: center;">
 	<ul class="slides">
 		<li>
 			<a title="" target="_blank" href="#">
@@ -190,11 +190,7 @@ $(function() {
 										<th>content</th>
 										
 										<th>rank</th>
-									
 										
-									
-									
-									
 
 									</tr>
 								</thead>
