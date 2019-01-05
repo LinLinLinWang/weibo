@@ -211,7 +211,7 @@ $(function() {
 
 
 
-<div id="banner_tabs" class="flexslider" style="margin-right:auto;margin-left:auto;width:980px;">
+<div id="banner_tabs" class="flexslider" style="margin-left:184px;width:500px;float:left">
 
 	<ul class="slides">
 		<li>
@@ -240,6 +240,14 @@ $(function() {
 		<li><a>2</a></li>
 	</ol>
 </div>
+
+
+<div  style="width:500px; background-color:yellow;height:482px; float:left; ">
+
+
+</div>
+
+
 
 
 <!--中间显示项目总数-->
