@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >    
-<mapper namespace="edu.yuying.dao.PostInfoDao" >   
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="edu.yuying.dao.PostInfoDao">
 
-   <resultMap type="HistoryPostingRecord" id="historyPostingRecordResult">
+	<resultMap type="HistoryPostingRecord" id="historyPostingRecordResult">
 
 		<id property="id" column="id" />
 
-	<result property="phone" column="phone" />
-	<result property="content" column="Content" />
+		<result property="phone" column="phone" />
+		<result property="content" column="Content" />
 
 		<result property="contentType" column="contenttype" />
 		<association property="user" column="phone" select="getUserInfoByphone" />
-	
-	<collection property="reviewList" ofType="RecordHistoricalChanges" column="id" select="getReviewlist">
-			
+
+		<collection property="reviewList" ofType="RecordHistoricalChanges"
+			column="id" select="getReviewlist">
+
+			<id property="id" column="id" />
+
+			<id property="sendPhone" column="SendPhone" />
+			<id property="receivePhone" column="ReceivePhone" />
+			<id property="time" column="time" />
+            <result property="content" column="Content" />
+			<association property="fromuser" column="SendPhone" select="getUserInfoByphone" />
+			<association property="touser" column="ReceivePhone" select="getUserInfoByphone" />
 		</collection>
 	</resultMap>
 	<resultMap type="User" id="user_usertable">
@@ -30,62 +39,74 @@
 		<result property="uage" column="uage" />
 
 		<result property="Uconnect" column="Uconnect" />
-	
+
 	</resultMap>
+
+
 
 	<select id="getUserInfoByphone" parameterType="java.lang.String"
 		resultMap="user_usertable">select * from userinfo where Phone = #{phone}
 	</select>
-	<select id="getReviewlist" 
-		resultType="RecordHistoricalChanges">select * from recordsofhistoricalexchanges where id = #{id}
+	<select id="getReviewlist" resultType="RecordHistoricalChanges">select * from
+		recordsofhistoricalexchanges where id = #{id}
 	</select>
 
 
 	<!--返回所有你发过的说说 -->
-	<select id="showPostByPhone" parameterType="String"
-		timeout="5" statementType="PREPARED" resultMap="historyPostingRecordResult">
+	<select id="showPostByPhone" parameterType="String" timeout="5"
+		statementType="PREPARED" resultMap="historyPostingRecordResult">
 		select
-	*
+		*
 		from historypostingrecord where phone =#{phone}
 	</select>
 
 	<!-- 根据手机号以及类型区分 -->
-	<select id="showPostByPhoneByState"  timeout="5"
-		statementType="PREPARED" resultMap="historyPostingRecordResult">
+	<select id="showPostByPhoneByState" timeout="5" statementType="PREPARED"
+		resultMap="historyPostingRecordResult">
 		select
-	*
+		*
 		from historypostingrecord where phone =#{0} and contenttype=#{1}
 	</select>
 
 	<!-- 查看时间段内聊天记录 -->
-	<select id="showPostByPhoneAndTime" parameterType="String" timeout="5"
-		statementType="PREPARED" resultMap="historyPostingRecordResult">
+	<select id="showPostByPhoneAndTime" parameterType="String"
+		timeout="5" statementType="PREPARED" resultMap="historyPostingRecordResult">
 		select
 		*
-		from historypostingrecord where time &gt;=#{1}and
-		time&lt;#{2} and phone=#{0}
+		from
+		historypostingrecord where time &gt;=#{1}and
+		time&lt;#{2} and
+		phone=#{0}
 	</select>
-	
+
 
 
 	<!-- 插入數據 -->
-  <insert id="insertPost" parameterType="HistoryPostingRecord" timeout="5"   flushCache="true"
-  statementType="PREPARED">insert into historypostingrecord (phone, content,contenttype,time)values (#{phone}, #{content}, #{contentType},#{time})
- </insert>
-	
- <!-- 通过主键集合批量删除记录 -->
+	<insert id="insertPost" parameterType="HistoryPostingRecord"
+		timeout="5" flushCache="true" statementType="PREPARED">insert into
+		historypostingrecord (phone, content,contenttype,time)values
+		(#{phone}, #{content}, #{contentType},#{time})
+	</insert>
 
-<delete id="deletePost" parameterType="long">
+	<!-- 通过主键集合批量删除记录 -->
 
-delete FROM historypostingrecord WHERE ID =#{id} 
+	<delete id="deletePost" parameterType="long">
 
-</delete>
- <!-- 显示热帖 -->
- <select id="showHotPosting" timeout="5"
-		statementType="PREPARED" resultType="HotPosting">
-	select a.id,a.content,COUNT(b.id)as num from historypostingrecord a,recordsofhistoricalexchanges b where a.id=b.id GROUP BY(b.id)
+		delete FROM historypostingrecord WHERE ID =#{id}
+
+	</delete>
+	<!-- 显示热帖 -->
+	<select id="showHotPosting" timeout="5" statementType="PREPARED"
+		resultType="HotPosting">
+		select a.id,a.content,COUNT(b.id)as num from historypostingrecord
+		a,recordsofhistoricalexchanges b where a.id=b.id GROUP BY(b.id)
 	</select>
-	
+	<!-- 显示指定id的帖子详情 -->
+	<select id="showPostById" timeout="5" statementType="PREPARED"
+		resultMap="historyPostingRecordResult">
+		select * from historypostingrecord where id=#{0}
+	</select>
 
-      
+
+
 </mapper>  

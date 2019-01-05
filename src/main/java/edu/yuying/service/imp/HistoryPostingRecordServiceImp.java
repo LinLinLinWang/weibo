@@ -85,4 +85,13 @@ public class HistoryPostingRecordServiceImp implements edu.yuying.service.Histor
 		
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.yuying.service.HistoryPostingRecordService#showPostById(int)
+	 */
+	@Override
+	public HistoryPostingRecord showPostById(int id) {
+		// TODO Auto-generated method stub
+		return postInfoDao.showPostById(id);
+	}
+
 }
