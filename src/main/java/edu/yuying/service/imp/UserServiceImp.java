@@ -155,9 +155,9 @@ public User user_exist_returnUser(String phone) {
 	// TODO Auto-generated method stub
 	 User user=new User();
 	 user=quertUserDao.queryUserByPhone(phone);
-	 if(null==user){
+	 if(null == user){
 		 System.out.println("用户为空");
-		 
+		 return null;
 	 }
 	return user;
 }
