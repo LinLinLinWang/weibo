@@ -96,7 +96,22 @@ public class HistoryPostingRecordController {
 		return  map;
 		}
 		
+	//显示详情页
 	
-
+	@RequestMapping(value = "showPostDetail.mvc")
+	public @ResponseBody ModelAndView showPostDetail(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+		response.setContentType("text/html");
+		//ModelAndView mav = new ModelAndView();
+		//Map<String, Object> map = new HashMap<String, Object>();
+		String id=request.getParameter("postid");
+	     HistoryPostingRecord historyPostingRecord=	historyPostingRecordServiceImp.showPostById(Integer.valueOf(id));
+		// System.out.println(historyPostingRecord.getReviewList().get(0).getFromuser().getuName());
+	     ModelAndView mav = new ModelAndView();
+		mav.setViewName("/showpostdetail");
+	    mav.addObject("historyPostingRecord", historyPostingRecord);
+		return  mav;
+		}
+		
 	
 }
