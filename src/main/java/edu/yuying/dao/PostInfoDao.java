@@ -24,6 +24,8 @@ import edu.yuying.entity.User;
  */
 
 public interface PostInfoDao {
+	//查看指定id的帖子
+	  public HistoryPostingRecord showPostById(int  id);
 	//查看自己上传过的所有
    public List<HistoryPostingRecord> showPostByPhone(String phone);
    //查看指定类型的说说HistoryPostingRecord

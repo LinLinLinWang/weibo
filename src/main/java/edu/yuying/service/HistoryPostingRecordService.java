@@ -26,7 +26,9 @@ import edu.yuying.entity.User;
 
 public interface HistoryPostingRecordService {
 public List<HistoryPostingRecord> showHistoryPost(String fromphone);
-	
+	//根据id显示帖子
+
+public HistoryPostingRecord showPostById(int id);
 	//根据评论人的手机号 以及类型区分
 	public List<HistoryPostingRecord> showPostByPhoneAndType(String phone,int type);
     //根据评论人时间 指定时间  指定时间段

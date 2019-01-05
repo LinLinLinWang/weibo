@@ -198,10 +198,14 @@ $(function() {
 								
 	                              <c:forEach items="${hotpostlist}" var="hostinf">
 
-										<tr class="odd gradeX">
-
-											 <td>${hostinf.id}</td>
-										     <td class="make-wrap" id="testDIV">${hostinf.content}</td>
+										<tr class="odd gradeX">    	<td>  
+                                         <form action="" method="post" id="postid${hostinf.id}">
+                                         	
+                                   <input type="text" id="postid" name="postid"  value="${hostinf.id}" readonly="readonly" style="border:none""/> 
+                                        
+                                         </form>
+										 </td>
+										<td  id="testDIV"><a href="showPostDetail.mvc" class="postid${hostinf.id} postid"> ${hostinf.content}</a></td>    
 										   
 											 <td>${hostinf.num}</td>
 											 </tr> 
@@ -209,6 +213,25 @@ $(function() {
 									</c:forEach>
 								</tbody>
 							</table>
+<script type="text/javascript">
+ 
+ $(function(){
+ 
+  $(".postid").click(function(){
+  
+   var href = $(this).attr("href");
+    var classfora= $(this).attr("class");
+    var formid=classfora.split(" ");
+ 
+   $("#"+formid[0]).attr("action", href).submit();	
+ 
+   return false;
+ 
+  });
+ 
+ })
+ 
+</script>
 
 </body>
 </html>
