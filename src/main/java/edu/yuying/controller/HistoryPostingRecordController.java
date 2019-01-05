@@ -64,7 +64,7 @@ public class HistoryPostingRecordController {
 		String title=request.getParameter("title");
 		String phone = (String)request.getSession().getAttribute("userphone");
 		//title放在content中 中间用+连接 存储
-		String all = title + "+" + content;
+		String all = title + "+内容：" + content;
 		
 		//拿到user
 		User user = null;
