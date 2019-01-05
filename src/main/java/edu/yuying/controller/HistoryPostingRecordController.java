@@ -61,14 +61,24 @@ public class HistoryPostingRecordController {
 	//	String phone=(String)request.getSession().getAttribute("userphone");
 		String type=request.getParameter("type");
 		String content=request.getParameter("content");
-		System.out.println(type+content);
+		String title=request.getParameter("title");
+		String phone = (String)request.getSession().getAttribute("userphone");
+		//title放在content中 中间用+连接 存储
+		String all = title + "+" + content;
+		
+		//拿到user
+		User user = null;
+		if(userServiceImp.user_exist(phone)) {
+			user = userServiceImp.user_exist_returnUser((String)request.getSession().getAttribute("userphone"));
+		}
 		
 	   Timestamp time = new Timestamp(System.currentTimeMillis()); 
 	   HistoryPostingRecord historyPostingRecord=new HistoryPostingRecord();
-	   historyPostingRecord.setContent(content);
-	   historyPostingRecord.setPhone("15964245533");
+	   historyPostingRecord.setContent(all);
+	   historyPostingRecord.setPhone(phone);
 	   historyPostingRecord.setContentType(Integer.valueOf(type));
 	   historyPostingRecord.setTime(time);
+	   historyPostingRecord.setUser(user);
 	   if(1==historyPostingRecordServiceImp.insertPost(historyPostingRecord)){
 		   System.out.println("插入成功");
 			return map;

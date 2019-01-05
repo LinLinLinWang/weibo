@@ -7,30 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>发布帖子</title>
 <style>
-	ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    width: 200px;
-    background-color: #6CA6CD;
-}
 
-li a {
-    display: block;
-    color: #000;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-
-li a.active {
-    background-color: #4CAF50;
-    color: white;
-}
-
-li a:hover:not(.active) {
-    background-color: #555;
-    color: white;
-}
 .bbsTitle {
 	height: 14px;
     line-height: 14px;
@@ -73,41 +50,38 @@ width:900px;
 
 		</ul>
 	</div> -->
-	<div class="text" style="margin-left:100px;margin-top:10px;width:300px;text-align:left; float:left;">
-		<b>发帖</b>
-		
-		<table id="publish">
-			<tr>
-			<td class="left">标题：</td>
-				<td>
-					<input style="height:14px;width:640px;" />
-					<select>
-						<option value="">选择版块</option>
-						<option value="">1</option>
-						<option value="">2</option>
-						<option value="">3</option>
-						<option value="">4</option>
-						<option value="">5</option>
-					</select>
-				</td>
-			</tr>
-			<tr>
-			<td class="left">内容：</td>
-			<td><textarea  id="textAreaContainer" style="height: 400px;
-			    width: 728px;"></textarea></td>
-			</tr>
-			<tr>
-				<td colspan="2">
-					<span class="fl mt5" style="padding-left:35px;color:#8A8A8A;">请遵守<a class="hrefgonyue" target="_blank" href="">论坛公约</a>言论规则，不得违反国家法律法规</span>
-					
-					<button style="float:right;margin-right:100px;">发表</button>
-				</td>
-			</tr>
-		</table>
-
-		
-	</div>
-	
+	<form method="post" action="ajax/insertPostingHistory.mvc">
+		<div class="text" style="margin-left:100px;margin-top:10px;width:300px;text-align:left; float:left;">
+			<b>发帖</b>
+			
+			<table id="publish">
+				<tr>
+				<td class="left">标题：</td>
+					<td>
+						<input name = "title" style="height:14px;width:640px;" />
+						<select name="type">
+							<option value="-1">选择版块</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+							<option value="4">4</option>
+							<option value="5">5</option>
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td class="left">内容：</td>
+					<td><textarea  name="content" style="height: 400px; width: 728px;"></textarea></td>
+				</tr>
+				<tr>
+					<td colspan="2">
+						<span class="fl mt5" style="padding-left:35px;color:#8A8A8A;">请遵守<a class="hrefgonyue" target="_blank" href="">论坛公约</a>言论规则，不得违反国家法律法规</span>
+						<input type="submit" style="float:right;margin-right:100px;" value="发表"/>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</form>	
 </div>	
 	
 	
