@@ -6,7 +6,66 @@
 <head>
 <meta charset="utf-8">
 <title>育婴门户网站</title>
+
+
+
+<!--回到顶点js-->
+<script src="js/back_top.js"></script>
 <style>
+
+
+.mcontainer {
+	    width: 1000px;
+	    min-width: 1000px;
+	    margin-left: auto;
+	    margin-right: auto;
+	}
+	.middle {
+	    background-color: #fff;
+	    border-bottom: 1px solid #ddd;
+	}
+	
+	div {
+	    display: block;
+	}
+	
+	
+	.mcontainer:after {
+	    visibility: hidden;
+	    display: block;
+	    font-size: 0;
+	    content: " ";
+	    clear: both;
+	    height: 0;
+	}
+	
+	.summary ul {
+	    text-align: center;
+	}
+	.summary ul li {
+	    padding-left: 40px;
+	    padding-right: 40px;
+	    display: inline-block;
+	}
+	.summary ul li p {
+	    font-size: 16px;
+	    color: #666;
+	    text-align: center;
+	}
+	.summary ul li p>span {
+	    font-size: 30px;
+	    color: #bb0000;
+	}
+   .id{
+   font-size: 30px;
+	    color: #bb0000;}
+#footer{
+		color:rgb(136,136,136);
+		background-color: rgb(51,51,51);
+		text-align: center;
+		font-size: 15px;
+		padding-top: 10px;
+	}
 /*当对象内文本溢出时显示省略标记*/
 table{
    
@@ -150,7 +209,8 @@ $(function() {
 </div>
 
 
-<div id="banner_tabs" class="flexslider" style="width: 50%;text-align: center;">
+
+<div id="banner_tabs" class="flexslider" style="margin-right:auto;margin-left:auto;width:980px;">
 	<ul class="slides">
 		<li>
 			<a title="" target="_blank" href="#">
@@ -179,28 +239,60 @@ $(function() {
 	</ol>
 </div>
 
-      ===========================================================热门帖子
+
+<!--中间显示项目总数-->
+	<div class="middle" style="background-color: #fff;border-bottom: 1px solid #ddd;">
+		<div class="mcontainer" style="width: 1000px;min-width: 1000px;
+   			 margin-left: auto;margin-right: auto;">
+			<div class="summary" style="padding-top: 32px;padding-bottom: 32px;
+    		background-color: #fff;"> 
+			<ul>
+				<li>	
+					<p>发布话题总数</p>
+					<p><span  id="#">0</span>次</p>
+				</li>
+
+				<li>
+					<p>一共评论</p>
+					<p><span id="#">0</span>次</p>
+				</li>
+
+				<li>
+					<p>你有</p>
+					<p><span id="#">0</span>个论坛好友</p>
+				</li>
+
+				<li>
+					<p>svhdkz</p>
+					<p><span id="#">0</span>￥</p>
+				</li>
+				</ul>							
+			</div>
+		</div>
+	</div>
+	
+
+     <!--项目具体分类-->
+	<div id="detail_pro" style="margin-right:auto;margin-left:auto;width:980px; background-color:#efefef">
+		<div style="background-color:#efefef;width:auto;text-align:center;height:80px">
+		<h1 style="font-weight:inherit;color:#adadad;padding-top:20px">——项目分类——</h1></div>
       
-      <table class="table table-striped table-bordered table-hover"
-								id="dataTables-example" style="width:100%; height:100%">
-								<thead>
+      <table class="table table-striped table-bordered table-hover" border-bottom="10px"
+								id="dataTables-example" style="width:100%; height:100%;line-height:50px;" >
+								<thead style="font-weight:inherit;color:#adadad;">
 									<tr>
 									   
-										<th>id</th>
-										<th>content</th>
+										<th>热榜排名</th>
+										<th>热门话题</th>
 										
-										<th>rank</th>
-									
-										
-									
-									
+										<th>评论数</th>
 									
 
 									</tr>
 								</thead>
-								<tbody>
+								<tbody  style="font-weight:inherit;text-align:center; ">
 								
-	                              <c:forEach items="${hotpostlist}" var="hostinf">
+	                             <!-- <c:forEach items="${hotpostlist}" var="hostinf">
 
 										<tr class="odd gradeX">
 
@@ -208,11 +300,61 @@ $(function() {
 										     <td class="make-wrap" id="testDIV">${hostinf.content}</td>
 										   
 											 <td>${hostinf.num}</td>
-											 </tr> 
+										 </tr> 
+										 
 					
 									</c:forEach>
+									-->
+									
+									<tr class="odd gradeX">
+
+											 <td class="id">1</td>
+										     <td class="make-wrap" id="testDIV">shafahfahhfa....</td>
+										   
+											 <td >20</td>
+										 </tr> 
+									<tr class="odd gradeX">
+
+											 <td class="id">1</td>
+										     <td class="make-wrap" id="testDIV">shafahfahhfa....</td>
+										   
+											 <td>20</td>
+										 </tr>  
 								</tbody>
 							</table>
+							
+							</div>
+							
+							
+							
+<br/><br/><br/>s							
+							
+<div id="footer">
+		<div>
+			<span>Copyright © 2018-2019 All Rights Reserved 育婴论坛  版权所有   </span>
+			<br/>
+			<br/>
+			<span id="wz"></span>
+			<br/>
+			
+			<span>xxxxxxxxx</span>
+			<br />
+			<br/>
+			<span>所制作</span>
+			<br />
+			<br/>
+		</div>
+		<!--回到顶部-->
+	</div>
+ <div id="back_top" style="position:fixed;width: 50px;
+            height: 50px;
+            bottom: 20px;
+            right: 10px;">
+        <a href="#header">
+            <img src="images/back_top.png" alt=""style="width:50px;height:50px;">
+        </a>
+    </div> 
+							
 
 </body>
 </html>
