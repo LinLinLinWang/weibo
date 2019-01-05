@@ -3,6 +3,7 @@
  */
 package edu.yuying.service;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import edu.yuying.dao.ChatWithPeopleDao;
@@ -31,12 +32,12 @@ public interface ChatService {
 	public List<ChatWithPeople> showChatWithWho(String sendPhone);
 
 	// <!-- 查看时间段内聊天记录-->
-	public List<ChatWithPeople> showChatHistoryDuringTime(String fromphone, String starttime, String endtime);
+	public List<ChatWithPeople> showChatHistoryDuringTime(String fromphone, Timestamp starttime, Timestamp endtime);
 
 	// 根据时间列出跟谁聊过天
 	public List<ChatWithPeople> chatWithWhoDringTime(String fromphone, String starttime, String endtime);
 
 	// 插入聊天记录
 	int insertChatDate(ChatWithPeople chatWithPeople);
-
+  
 }

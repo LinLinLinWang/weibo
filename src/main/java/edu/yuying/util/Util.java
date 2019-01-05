@@ -6,6 +6,8 @@ package edu.yuying.util;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.annotation.Resource;
 import javax.resource.spi.RetryableUnavailableException;
@@ -230,4 +232,20 @@ public class Util {
         }
 			
 	}
+	//查看时间
+	public static Date getNeedTime(int hour,int minute,int second,int addDay,int ...args){
+	    Calendar calendar = Calendar.getInstance();
+	    if(addDay != 0){
+	        calendar.add(Calendar.DATE,addDay);
+	    }
+	    calendar.set(Calendar.HOUR_OF_DAY,hour);
+	    calendar.set(Calendar.MINUTE,minute);
+	    calendar.set(Calendar.SECOND,second);
+	    if(args.length==1){
+	        calendar.set(Calendar.MILLISECOND,args[0]);
+	    }
+	    return calendar.getTime();
+	}
+
+
 }

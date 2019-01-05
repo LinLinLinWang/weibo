@@ -298,7 +298,7 @@ function getPhoto(){
 <script type="text/javascript">
 window.onload= function   line(){
 	var userphone = $("#userphone").text();
-alert(userphone);
+
 	if ('WebSocket' in window) {
 		websocket = new WebSocket(
 				"ws://localhost:8080/ssm_grimm/websocket/" + userphone);
@@ -337,7 +337,7 @@ alert(userphone);
 
 		function receive(sendMessage) {
 			//$("#message0").remove;
-			alert(sendMessage);
+			
 			var strs = new Array(); //定义一数组 
 			strs = sendMessage.split("用户手机号"); //字符分割 
 			var time = strs[0];
@@ -348,7 +348,7 @@ alert(userphone);
 			strs2 = strs1[1].split("发来消息");
 			var name = strs2[0];
 			var content = strs2[1];
-
+			
 			var numMessage = $("#who_send").children(".message").length;
 			if (numMessage - 1 == 0) {
 
@@ -365,12 +365,23 @@ alert(userphone);
 					'this.src="../userPhoto/default.jpg"');
 			$("#message" + numMessage).find("h8").text(name);
 			$("#message" + numMessage).find("h5").text(time);
+			$("#message" + numMessage).find("p").text(whosendyou);
 
 			var numMessage = $("#who_send").children(".message").length;
 
 			$("#messageNum").html(numMessage - 1);
 
 		}
+		
+
+
+
+function turnChat(e) {
+	var  whosendu=$(e).find("p").text();
+	 window.location.href="./turnChat.mvc?whosendu="+whosendu;
+	 
+	
+}
 	</script>
 	
 
@@ -535,8 +546,9 @@ label {
 							条信息
 						</h6>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item preview-item message" id="message0"
-							style="display: none">
+						<div class="dropdown-item preview-item message" id="message0"
+							style="display: none" onclick="turnChat(this);">
+							<p style="display: none;">dddddd </p>
 							<div class="preview-thumbnail">
 								<img src="../personal_page/images/faces/face4.jpg" alt="image"
 									class="profile-pic">
@@ -549,7 +561,7 @@ label {
 								</h6>
 								<h5 class="text-gray mb-0">时间</h5>
 							</div>
-						</a>
+						</div>
 
 
 

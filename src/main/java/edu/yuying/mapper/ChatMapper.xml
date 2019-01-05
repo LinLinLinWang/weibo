@@ -49,12 +49,12 @@
 	</select>
 
 	<!-- 查看时间段内聊天记录 -->
-	<select id="chatFromTimeToTime" parameterType="String" timeout="5"
+	<select id="chatFromTimeToTime"  timeout="5"
 		statementType="PREPARED" resultMap="ChatWithPeopleResult">
 		select
 		<include refid="Base_Column_List" />
-		from chatwithpeople where sendphone =#{0} and time &gt;=#{1}and
-		time&lt;#{2}
+		from chatwithpeople where sendphone =#{0} and time &gt;=#{1,jdbcType=TIMESTAMP}and
+		time&lt;#{2,jdbcType=TIMESTAMP}
 	</select>
 	
 
