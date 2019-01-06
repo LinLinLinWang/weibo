@@ -250,8 +250,12 @@ td {
 	</ol>
 </div>
 
-<div  style="width:500px; background-color:yellow;height:482px; float:left; ">
+<div  style="width:500px; background-color:yellow;height:464px;margin: 18px auto 20px 10px; float:left; ">
 
+<div
+			style="background-color: #efefef; width: auto; text-align: center; height: 80px">
+			<h1 style="font-weight: inherit; color: #adadad; padding-top: 20px">——最新资讯——</h1>
+		</div>
 
 </div>
 
@@ -314,8 +318,8 @@ td {
 			<thead style="font-weight: inherit; color: #adadad;">
 				<tr>
 
-					<th>热榜排名</th>
-					<th>热门话题</th>
+					<th>ID</th>
+					<th>内容</th>
 
 
 					<th>评论数</th>
