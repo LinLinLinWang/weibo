@@ -299,23 +299,23 @@ td {
 				style="padding-top: 32px; padding-bottom: 32px; background-color: #fff;">
 				<ul>
 					<li>
-						<p>发布话题总数</p>
+						<p>论坛话题总数</p>
 						<p>
 							<span id="#">${numtotal}</span>次
 						</p>
 					</li>
 
 					<li>
-						<p>一共评论</p>
+						<p>论坛总网友评论</p>
 						<p>
 							<span id="#">${peopletotal}</span>次
 						</p>
 					</li>
 
 					<li>
-						<p>你有</p>
+						<p>共有</p>
 						<p>
-							<span id="#">${reviewnum}</span>个论坛好友
+							<span id="#">${reviewnum}</span>个论坛网友
 						</p>
 					</li>
 

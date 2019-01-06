@@ -686,7 +686,10 @@ label {
 						class="mdi mdi-contacts menu-icon"></i>
 				</a></li>
 
-				<li class="nav-item"><a class="nav-link" data-toggle="collapse"
+
+
+	<c:if test="${userdetail.ustate==1}">
+						<li class="nav-item"><a class="nav-link" data-toggle="collapse"
 					href="#general-pages" aria-expanded="false"
 					aria-controls="general-pages"> <span class="menu-title">管理员权限</span>
 						<i class="menu-arrow"></i> <i
@@ -700,6 +703,8 @@ label {
 
 						</ul>
 					</div></li>
+					</c:if>
+		
 
 			</ul>
 			</nav>

@@ -46,12 +46,18 @@ public class HistoryPostingRecordController {
 			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		 ModelAndView  map = new  ModelAndView ();
 		 String  usernamefromcookie=Util.searchCookie(request, response, "session_name");
-		
+		System.out.println(usernamefromcookie);
 		String sessioname=(String)request.getSession().getAttribute("userphone");
-			
+		System.out.println(sessioname);
 		String phone=null;
-		if(null==usernamefromcookie)phone=sessioname;
-		if(null==sessioname)phone=usernamefromcookie;
+		if(null==usernamefromcookie){
+			phone=sessioname;
+		}else{
+			phone=usernamefromcookie;
+		}
+			
+				
+		System.out.println("===================="+phone);
 		map.setViewName("/showselfposting");
 		List<HistoryPostingRecord> HistoryPostingRecord=historyPostingRecordServiceImp.showHistoryPost(phone);
 		//request.setAttribute("yourPost", HistoryPostingRecord);
