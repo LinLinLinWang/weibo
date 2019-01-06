@@ -64,7 +64,7 @@ public class HistoryPostingRecordController {
 		String title=request.getParameter("title");
 		String phone = (String)request.getSession().getAttribute("userphone");
 		//title放在content中 中间用+连接 存储
-		String all = title + "+内容：" + content;
+		String all = title + "+" + content;
 		
 		//拿到user
 		User user = null;
@@ -79,7 +79,8 @@ public class HistoryPostingRecordController {
 	   historyPostingRecord.setContentType(Integer.valueOf(type));
 	   historyPostingRecord.setTime(time);
 	   historyPostingRecord.setUser(user);
-	   if(1==historyPostingRecordServiceImp.insertPost(historyPostingRecord)){
+	   int res = historyPostingRecordServiceImp.insertPost(historyPostingRecord);
+	   if(1 == res){
 		   System.out.println("插入成功");
 			return map;
 		   
