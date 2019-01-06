@@ -24,9 +24,9 @@
     <meta name="x5-page-mode" content="app">
     <base target="_blank">
     <title>会话_聊天机器人</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="../css/chat.css">
-    <script src="../js/jquery.min.js"></script>
+    <link href="/ssm_grimm/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="/ssm_grimm/css/chat.css">
+    <script src="/ssm_grimm/js/jquery.min.js"></script>
    <!-- websocket -->
   <script type="text/javascript">
 

@@ -10,6 +10,7 @@
 <title>帖子详情</title>
 <style>
 </style>
+<<<<<<< HEAD
 <link rel="stylesheet" type="text/css" href="/ssm_grimm/a_data/dmaku.css">
 <script src="/ssm_grimm/js/jquery.min.js"></script>
 <script type="text/javascript" src="/ssm_grimm/js/modernizr.js"></script>
@@ -77,6 +78,9 @@ function  reviewpeople(dd,phone){
 
 
 </script>
+=======
+
+>>>>>>> branch 'master' of https://github.com/GypsyFree/project.git
 </head>
 <body>
 	<c:import url="template_navigator.jsp"></c:import>
@@ -86,9 +90,11 @@ function  reviewpeople(dd,phone){
 			<div style="width:643px;font-size:120%;border-bottom:0.5px solid grey;padding:4px;"> ${theam}</div><!-- 帖子主题 -->
 			<div style="width:643px;margin:4px;item-margin:4px;">
 					<div style="width:643px;"><!--发帖人、时间 -->
+
 			<a  href="/ssm_grimm/ajax/turnChat.mvc?whosendu=${historyPostingRecord.phone}">				<img class="img_icon" style="border-radius: 20px;width:40px;height:40px;float: left;margin:4px" 
 							src="/ssm_grimm/userPhoto/${historyPostingRecord.phone}.jpg"
 							onerror="this.src='/ssm_grimm/userPhoto/default.jpg'"/></a>
+
 						<div style="color:grey;">
 							${historyPostingRecord.user.uName}
 						</div>
@@ -104,6 +110,7 @@ function  reviewpeople(dd,phone){
 
 					</c:forEach>
 					</div>
+
 					<div onclick="showreviewbox();">  <a href="#" > 评论</a></div>
 			</div>
 		</div>
@@ -252,9 +259,7 @@ function  reviewpeople(dd,phone){
 	
 	
 	
-	
-	
-	
+
 	
 	</div>
 </body>

@@ -71,6 +71,7 @@ public class HistoryPostingRecordController {
 	public String  insertPostingHistory(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		Map<String, Object> map = new HashMap<String, Object>();
+		request.setCharacterEncoding("UTF-8");
 		
 	//	String phone=(String)request.getSession().getAttribute("userphone");
 		String type=request.getParameter("type");
