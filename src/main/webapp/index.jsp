@@ -65,8 +65,8 @@ div {
 }
 
 #footer {
-	color: rgb(136, 136, 136);
-	background-color: rgb(51, 51, 51);
+	color: white;
+	background-color: #fc7695;
 	text-align: center;
 	font-size: 15px;
 	padding-top: 10px;
@@ -220,22 +220,22 @@ td {
 
 
 
-<div id="banner_tabs" class="flexslider" style="margin-left:184px;width:500px;float:left">
+<div id="banner_tabs" class="flexslider" style="margin-left:184px;width:695px;height:352px;float:left">
 
 	<ul class="slides">
 		<li>
 			<a title="" target="_blank" href="#">
-				<img width="1920" height="482" alt="" style="background: url(images/banner1.jpg) no-repeat center;" src="images/alpha.png">
+				<img width="1920" height="100%" alt="" style="background: url(images/banner1.jpg) no-repeat center;" src="images/alpha.png">
 			</a>
 		</li>
 		<li>
 			<a title="" href="#">
-				<img width="1920" height="482" alt="" style="background: url(images/banner2.jpg) no-repeat center;" src="images/alpha.png">
+				<img width="1920" height="100%" alt="" style="background: url(images/banner2.jpg) no-repeat center;" src="images/alpha.png">
 			</a>
 		</li>
 		<li>
 			<a title="" href="#">
-				<img width="1920" height="482" alt="" style="background: url(images/banner3.jpg) no-repeat center;" src="images/alpha.png">
+				<img width="1920" height="100%" alt="" style="background: url(images/banner3.jpg) no-repeat center;" src="images/alpha.png">
 			</a>
 		</li>
 	</ul>
@@ -250,11 +250,16 @@ td {
 	</ol>
 </div>
 
-<div  style="width:500px; background-color:yellow;height:464px;margin: 18px auto 20px 10px; float:left; ">
+<div  style="width:270px; background-color:white;height:362px;margin: 18px auto 20px 10px; float:left; ">
 
-<div
-			style="background-color: #efefef; width: auto; text-align: center; height: 80px">
-			<h1 style="font-weight: inherit; color: #adadad; padding-top: 20px">——最新资讯——</h1>
+       <br/>
+       <br/>
+		
+		<div>
+		
+		<img alt="hahahah"  background-size="cover" src="images/2wei.PNG">
+			
+		
 		</div>
 
 </div>
@@ -334,14 +339,14 @@ td {
 
 					<tr class="odd gradeX">
 						<td>
-							<form action="" method="post" id="postid${hostinf.id}">
+							<form  action="" method="post" id="postid${hostinf.id}">
 
-								<input type="text" id="postid" name="postid"
-									value="${hostinf.id}" readonly="readonly" style="border: none" "/>
+								<input class="id"  type="text" id="postid" name="postid" style="background-color:#efefef;boder-style:none;border:0px; text-align:center" 
+									value=" ${hostinf.id}" readonly="readonly" style="border: none" "/>
 
 							</form>
 						</td>
-						<td id="testDIV"><a href="showPostDetail.mvc"
+						<td   id="testDIV"><a href="showPostDetail.mvc"
 							class="postid${hostinf.id} postid">
 							${hostinf.content}
 						</a></td>
@@ -380,7 +385,7 @@ td {
 	<br />
 	<br />
 
-	<div id="footer">
+	<div id="footer"  style="margin-right:auto;margin-left:auto;width:980px">
 		<div>
 			<span>Copyright © 2018-2019 All Rights Reserved 育婴论坛 版权所有 </span> <br />
 			<br /> <span id="wz"></span> <br /> <span>xxxxxxxxx</span> <br /> <br />
