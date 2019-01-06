@@ -2,6 +2,7 @@ package edu.yuying.controller;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.lang.ProcessBuilder.Redirect;
 import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -67,7 +68,7 @@ public class HistoryPostingRecordController {
 	}
 
 	@RequestMapping("ajax/insertPostingHistory.mvc")
-	public @ResponseBody Map<String, Object> insertPostingHistory(HttpServletRequest request,
+	public String  insertPostingHistory(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		Map<String, Object> map = new HashMap<String, Object>();
 		
@@ -77,7 +78,7 @@ public class HistoryPostingRecordController {
 		String title=request.getParameter("title");
 		String phone = (String)request.getSession().getAttribute("userphone");
 		//title放在content中 中间用+连接 存储
-		String all = title + "+" + content;
+		String all = title + "内容" + content;
 		
 		//拿到user
 		User user = null;
@@ -95,11 +96,11 @@ public class HistoryPostingRecordController {
 	   int res = historyPostingRecordServiceImp.insertPost(historyPostingRecord);
 	   if(1 == res){
 		   System.out.println("插入成功");
-			return map;
+			return "redirect:/ajax/showPostingHistory.mvc";
 		   
 	   }
 		
-		return map;
+		return "失敗";
 
 	}
 //根据id删帖
@@ -110,7 +111,8 @@ public class HistoryPostingRecordController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		String id=request.getParameter("id");
 		System.out.println("帖子"+id);
-	if(1==historyPostingRecordServiceImp.deletePostingById(Long.parseLong(id))){		
+	if(1==historyPostingRecordServiceImp.deletePostingById(Integer.valueOf(id)))
+			{		
 		//删除成功
 		map.put("state", 0);
 	}else{
@@ -147,6 +149,22 @@ public class HistoryPostingRecordController {
 		//request.setAttribute("yourPost", HistoryPostingRecord);
 		map.addObject("allPost", HistoryPostingRecord);
 		map.setViewName("/showallposting");
+		return map;
+
+	}
+	//顯示的所有人的評論
+	@RequestMapping("ajax/showPostCenter.mvc")
+	public @ResponseBody  ModelAndView  showPostCenter(HttpServletRequest request,
+			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+		 ModelAndView  map = new  ModelAndView ();
+	
+		
+			
+				
+		map.setViewName("/postcenter");
+		List<HistoryPostingRecord> HistoryPostingRecord=historyPostingRecordServiceImp.showAllPosting();
+		//request.setAttribute("yourPost", HistoryPostingRecord);
+		map.addObject("allPost", HistoryPostingRecord);
 		return map;
 
 	}
