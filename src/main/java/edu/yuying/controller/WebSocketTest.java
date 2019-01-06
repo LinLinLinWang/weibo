@@ -87,13 +87,15 @@ public void onClose() {
  * @param message 客户端发送过来的消息
  * @param session 可选的参数
  */
-@SuppressWarnings("unused")
-//	@OnMessage
+@OnMessage
 public void onMessage(String message, Session session) {
- System.out.println("来自客户端的消息:" + message);
+ System.err.println("来自客户端的消息:" + message);
 // session.get
  //群发消息
- if (1>2) {
+ 
+ //判断是发给一个人还是所有人
+
+ if (message.contains("0我是管理员")) {
 
 	 System.out.println("群发送");
 	 System.out.println(message);
@@ -104,7 +106,7 @@ public void onMessage(String message, Session session) {
 
 	 System.out.println(message);
 	 System.out.println("单一发送");
- sendToUser(message);
+    sendToUser(message);
  }
 }
 
@@ -113,8 +115,9 @@ public void onMessage(String message, Session session) {
  * 给指定的人发送消息
  * @param message
  */
-@OnMessage
+
 public void sendToUser(String message) {
+	System.err.println(message);
  String sendUserno = message.split("[|]")[1];
  String sendMessage = message.split("[|]")[0];
  String now = getNowTime();
@@ -170,13 +173,13 @@ public void sendToUser(String message) {
  */
 private void sendAll(String message) {
  String now = getNowTime();
- String sendMessage = message.split("[|]")[0];
+ String sendMessage = message.split("我是管理员")[1];
  //遍历HashMap
  for (String key : webSocketSet.keySet()) {
  try {
   //判断接收用户是否是当前发消息的用户
   if (!userno.equals(key)) {
-  webSocketSet.get(key).sendMessage(now + "用户" + userno + "发来消息：" + " <br/> " + sendMessage);
+  webSocketSet.get(key).sendMessage("管理员大大说:"+sendMessage);
   System.out.println("key = " + key);
   }
  } catch (IOException e) {

@@ -11,9 +11,9 @@
 </head>
 <body>
 	帖子发帖人头像
-	<img src="userPhoto/${historyPostingRecord.phone}.jpg"
+	<img src="../userPhoto/${historyPostingRecord.phone}.jpg"
 		style="width: 100px; height: 100px"
-		onerror="this.src='userPhoto/default.jpg'"> 发帖人姓名 ：
+		onerror="this.src='../userPhoto/default.jpg'"> 发帖人姓名 ：
 	${historyPostingRecord.user.uName}
 	</br>
 	</br> 帖子主题： ${theam}
@@ -57,8 +57,8 @@
 
 				<tr class="odd gradeX">
 
-					<td><img src="userPhoto/${reviewList.sendPhone}.jpg"
-						onerror="this.src='userPhoto/default.jpg'"
+					<td><img src="../userPhoto/${reviewList.sendPhone}.jpg"
+						onerror="this.src='../userPhoto/default.jpg'"
 						style="width: 100px; height: 100px"></td>
 					<td>=============${reviewList.fromuser.uName}</td>
 					<td>${reviewList.content}</td>

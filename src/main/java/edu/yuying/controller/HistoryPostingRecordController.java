@@ -42,13 +42,20 @@ public class HistoryPostingRecordController {
 	@Resource
 	private HistoryPostingRecordServiceImp historyPostingRecordServiceImp;
 	@RequestMapping("ajax/showPostingHistory.mvc")
-	public @ResponseBody Map<String, Object> getChatTotalHistory(HttpServletRequest request,
+	public @ResponseBody  ModelAndView  getChatTotalHistory(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
-		Map<String, Object> map = new HashMap<String, Object>();
+		 ModelAndView  map = new  ModelAndView ();
+		 String  usernamefromcookie=Util.searchCookie(request, response, "session_name");
 		
-		String phone=(String)request.getSession().getAttribute("userphone");
+		String sessioname=(String)request.getSession().getAttribute("userphone");
+			
+		String phone=null;
+		if(null==usernamefromcookie)phone=sessioname;
+		if(null==sessioname)phone=usernamefromcookie;
+		map.setViewName("/showselfposting");
 		List<HistoryPostingRecord> HistoryPostingRecord=historyPostingRecordServiceImp.showHistoryPost(phone);
-		
+		//request.setAttribute("yourPost", HistoryPostingRecord);
+		map.addObject("yourPost", HistoryPostingRecord);
 		return map;
 
 	}
@@ -98,9 +105,9 @@ public class HistoryPostingRecordController {
 		System.out.println("帖子"+id);
 	if(1==historyPostingRecordServiceImp.deletePostingById(Long.parseLong(id))){		
 		//删除成功
-		
+		map.put("state", 0);
 	}else{
-		
+		map.put("state", 1);
 	}
 		
 		return  map;
@@ -108,7 +115,7 @@ public class HistoryPostingRecordController {
 		
 	//显示详情页
 	
-	@RequestMapping(value = "showPostDetail.mvc")
+	@RequestMapping(value = "ajax/showPostDetail.mvc")
 	public @ResponseBody ModelAndView showPostDetail(HttpServletRequest request, HttpServletResponse response)
 			throws IOException {
 		response.setContentType("text/html");
@@ -123,6 +130,17 @@ public class HistoryPostingRecordController {
 	    mav.addObject("theam", historyPostingRecord.getContent().split("内容")[0]);
 		return  mav;
 		}
-		
+	//管理员展现所有list
+	@RequestMapping("ajax/showAllPosting.mvc")
+	public @ResponseBody  ModelAndView  showAllPosting(HttpServletRequest request,
+			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+		 ModelAndView  map = new  ModelAndView ();
 	
+		  List<HistoryPostingRecord> HistoryPostingRecord=historyPostingRecordServiceImp.showAllPosting();
+		//request.setAttribute("yourPost", HistoryPostingRecord);
+		map.addObject("allPost", HistoryPostingRecord);
+		map.setViewName("/showallposting");
+		return map;
+
+	}
 }

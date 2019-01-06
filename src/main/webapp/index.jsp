@@ -8,10 +8,11 @@
 <meta charset="utf-8">
 <title>育婴门户网站</title>
 
-
+<script src="/ssm_grimm/js/jquery.min.js"></script>
+<script src="/ssm_grimm/js/slider.js"></script>
 
 <!--回到顶点js-->
-<script src="js/back_top.js"></script>
+<script src="/ssm_grimm/js/back_top.js"></script>
 <style>
 .mcontainer {
 	width: 1000px;
@@ -112,7 +113,7 @@ td {
 	overflow: hidden;
 	margin: -35px 0 0;
 	display: block;
-	background: url(images/ad_ctr.png) no-repeat;
+	background: url(/ssm_grimm/images/ad_ctr.png) no-repeat;
 	position: absolute;
 	top: 50%;
 	z-index: 10;
@@ -162,7 +163,7 @@ td {
 }
 
 .flex-control-paging li a {
-	background: url(images/dot.png) no-repeat 0 -16px;
+	background: url(/ssm_grimm/images/dot.png) no-repeat 0 -16px;
 	display: block;
 	height: 16px;
 	overflow: hidden;
@@ -187,8 +188,7 @@ td {
 }
 </style>
 </head>
-<script src="js/jquery.min.js"></script>
-<script src="js/slider.js"></script>
+
 <script type="text/javascript">
 	$(function() {
 		var bannerSlider = new Slider($('#banner_tabs'), {
@@ -225,17 +225,17 @@ td {
 	<ul class="slides">
 		<li>
 			<a title="" target="_blank" href="#">
-				<img width="1920" height="482" alt="" style="background: url(images/banner1.jpg) no-repeat center;" src="images/alpha.png">
+				<img width="1920" height="482" alt="" style="background: url(/ssm_grimm/images/banner1.jpg) no-repeat center;" src="/ssm_grimm/images/alpha.png">
 			</a>
 		</li>
 		<li>
 			<a title="" href="#">
-				<img width="1920" height="482" alt="" style="background: url(images/banner2.jpg) no-repeat center;" src="images/alpha.png">
+				<img width="1920" height="482" alt="" style="background: url(/ssm_grimm/images/banner2.jpg) no-repeat center;" src="/ssm_grimm/images/alpha.png">
 			</a>
 		</li>
 		<li>
 			<a title="" href="#">
-				<img width="1920" height="482" alt="" style="background: url(images/banner3.jpg) no-repeat center;" src="images/alpha.png">
+				<img width="1920" height="482" alt="" style="background: url(/ssm_grimm/images/banner3.jpg) no-repeat center;" src="/ssm_grimm/images/alpha.png">
 			</a>
 		</li>
 	</ul>
@@ -255,6 +255,33 @@ td {
 <div
 			style="background-color: #efefef; width: auto; text-align: center; height: 80px">
 			<h1 style="font-weight: inherit; color: #adadad; padding-top: 20px">——最新资讯——</h1>
+			
+					<table class="table table-striped table-bordered table-hover"
+			border-bottom="10px" id="dataTables-example"
+			style="width: 100%; height: 100%; line-height: 50px;">
+		   <br>
+		      <br>
+			<tbody style="font-weight: inherit; text-align: center;">
+
+				<c:forEach items="${newhis}" var="newhiss">
+
+					<tr class="odd gradeX">
+						<td>
+							
+					<a href="/ssm_grimm/ajax/showPostDetail.mvc?postid=${newhiss.id}">${newhiss.content}</a>	
+
+						
+						</td>
+						
+					</tr>
+					   <br>
+
+
+				</c:forEach>
+
+			</tbody>
+		</table>
+
 		</div>
 
 </div>
@@ -274,30 +301,25 @@ td {
 					<li>
 						<p>发布话题总数</p>
 						<p>
-							<span id="#">0</span>次
+							<span id="#">${numtotal}</span>次
 						</p>
 					</li>
 
 					<li>
 						<p>一共评论</p>
 						<p>
-							<span id="#">0</span>次
+							<span id="#">${peopletotal}</span>次
 						</p>
 					</li>
 
 					<li>
 						<p>你有</p>
 						<p>
-							<span id="#">0</span>个论坛好友
+							<span id="#">${reviewnum}</span>个论坛好友
 						</p>
 					</li>
 
-					<li>
-						<p>svhdkz</p>
-						<p>
-							<span id="#">0</span>￥
-						</p>
-					</li>
+		
 				</ul>
 			</div>
 		</div>
@@ -309,7 +331,7 @@ td {
 		style="margin-right: auto; margin-left: auto; width: 980px; background-color: #efefef">
 		<div
 			style="background-color: #efefef; width: auto; text-align: center; height: 80px">
-			<h1 style="font-weight: inherit; color: #adadad; padding-top: 20px">——项目分类——</h1>
+			<h1 style="font-weight: inherit; color: #adadad; padding-top: 20px">——热门文章——</h1>
 		</div>
 
 		<table class="table table-striped table-bordered table-hover"
@@ -334,14 +356,12 @@ td {
 
 					<tr class="odd gradeX">
 						<td>
-							<form action="" method="post" id="postid${hostinf.id}">
+							
+						${hostinf.id}
 
-								<input type="text" id="postid" name="postid"
-									value="${hostinf.id}" readonly="readonly" style="border: none" "/>
-
-							</form>
+						
 						</td>
-						<td id="testDIV"><a href="showPostDetail.mvc"
+						<td id="testDIV"><a href="/ssm_grimm/ajax/showPostDetail.mvc?postid=${hostinf.id}"
 							class="postid${hostinf.id} postid">
 							${hostinf.content}
 						</a></td>
@@ -354,20 +374,6 @@ td {
 				</c:forEach>
 
 
-				<tr class="odd gradeX">
-
-					<td class="id">1</td>
-					<td class="make-wrap" id="testDIV">shafahfahhfa....</td>
-
-					<td>20</td>
-				</tr>
-				<tr class="odd gradeX">
-
-					<td class="id">1</td>
-					<td class="make-wrap" id="testDIV">shafahfahhfa....</td>
-
-					<td>20</td>
-				</tr>
 			</tbody>
 		</table>
 
@@ -390,28 +396,12 @@ td {
 	</div>
 	<div id="back_top"
 		style="position: fixed; width: 50px; height: 50px; bottom: 20px; right: 10px;">
-		<a href="#header"> <img src="images/back_top.png" alt=""
+		<a href="#header"> <img src="/ssm_grimm/images/back_top.png" alt=""
 			style="width: 50px; height: 50px;">
 		</a>
 	</div>
 
-	<script type="text/javascript">
-		$(function() {
-
-			$(".postid").click(function() {
-
-				var href = $(this).attr("href");
-				var classfora = $(this).attr("class");
-				var formid = classfora.split(" ");
-
-				$("#" + formid[0]).attr("action", href).submit();
-
-				return false;
-
-			});
-
-		})
-	</script>
+	
 
 </body>
 </html>

@@ -25,6 +25,7 @@ import com.alibaba.fastjson.parser.deserializer.StringFieldDeserializer;
 import com.mysql.cj.conf.HostInfo;
 
 import edu.yuying.entity.ChatWithPeople;
+import edu.yuying.entity.HistoryPostingRecord;
 import edu.yuying.entity.HotPosting;
 import edu.yuying.entity.User;
 import edu.yuying.service.imp.ChatServiceImp;
@@ -64,11 +65,10 @@ public class IndexController {
 			//System.out.println("帖子评论"+historyPostingRecordServiceImp.showHotPosting().size());
 			List<HotPosting> hotpostlist=historyPostingRecordServiceImp.showHotPosting();
 			Iterator<HotPosting> iter = null;
-			HotPosting hot=new HotPosting();
-		        for (iter = hotpostlist.iterator(); iter.hasNext(); ) {
-		        	hot = iter.next();
-		            System.out.println(hot.getNum() + hot.getContent());}
-			
+		    String  numtotal=historyPostingRecordServiceImp.showAllPosting().size()+"";
+		    
+		    String  peopletotal=userServiceImp.queryAlLUser().size()+"";
+			String  reviewnum=historyPostingRecordServiceImp.showAllreviewlist().size()+"";
 			
 			//返回热门帖子信息
 			if(usernamefromcookie==null){
@@ -77,10 +77,19 @@ public class IndexController {
 				 mav.addObject("userdetail", userServiceImp.user_exist_returnUser(sessioname));
 				 //热门帖子
 				 mav.addObject("hotpostlist", historyPostingRecordServiceImp.showHotPosting());
+				 mav.addObject("newhis", historyPostingRecordServiceImp.showAllPosting().subList(0, 3));
+				 mav.addObject("numtotal", numtotal);
+				 mav.addObject("peopletotal", peopletotal);
+				 mav.addObject("reviewnum", reviewnum);
+				 
 				return mav;
 			}else{
 				 mav.addObject("userdetail", userServiceImp.user_exist_returnUser(usernamefromcookie));
-				 mav.addObject("hotpostlist", hotpostlist);
+				 mav.addObject("hotpostlist", historyPostingRecordServiceImp.showHotPosting());
+				 mav.addObject("newhis", historyPostingRecordServiceImp.showAllPosting().subList(0, 3));
+				 mav.addObject("numtotal", numtotal);
+				 mav.addObject("peopletotal", peopletotal);
+				 mav.addObject("reviewnum", reviewnum);
 				 return mav;
 				
 			}
@@ -97,5 +106,33 @@ public class IndexController {
 	}
 	
 
+	@RequestMapping("ajax/destroy.mvc")
+	public @ResponseBody ModelAndView  destroy(HttpServletRequest request,
+			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+		//String [][]showlis=new String[5][3];
+		ModelAndView mav = new ModelAndView();
+		mav.setViewName("/index");
+		 String  usernamefromcookie=Util.searchCookie(request, response, "session_name");
+		  String  passwordfromcookie= Util.searchCookie(request, response, "session_password");
+		String sessioname=(String)request.getSession().getAttribute("userphone");
+			String sessionpassword=(String)request.getSession().getAttribute("userpwd");
+			if(null!=usernamefromcookie){
+				
+				Util.setCookie(request, response, "usernamefromcookie", null);
+			}if(null!=passwordfromcookie){
+				Util.setCookie(request, response, "passwordfromcookie", null);
+			}if(null!=sessioname){
+				request.getSession().setAttribute("userphone", null);
+			}if(null!=sessionpassword){
+				
+				request.getSession().setAttribute("userpwd", null);
+			}
+			return mav;
+		
+		
+	   
+	
+
+	}
 	
 }

@@ -45,9 +45,9 @@ public class ChatController {
 		System.out.println(phone + "想看他跟别人的聊天记录");
 		Map<String, Object> map = new HashMap<String, Object>();
 		List<ChatWithPeople> userlist = chatServiceImp.showUserChatHistoryByPhone(phone);
-		System.out.println("长度" + userlist.size());
-		System.out.println("接受信息的人的手机号" + userlist.get(0).getToUser().getuName());
-
+		//System.out.println("长度" + userlist.size());
+		//System.out.println("接受信息的人的手机号" + userlist.get(0).getToUser().getuName());
+        
 		return map;
 
 	}

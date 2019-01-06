@@ -5,9 +5,16 @@
 <html style="height: 100%" s>
 <head>
 <!-- Required meta tags -->
+
+
 <meta charset="utf-8">
-<META HTTP-EQUIV="pragma" CONTENT="no-cache">
-<META HTTP-EQUIV="Cache-Control" CONTENT="no-cache, must-revalidate">
+
+<meta HTTP-EQUIV="pragma" CONTENT="no-cache"> 
+<meta HTTP-EQUIV="Cache-Control" CONTENT="no-store, must-revalidate"> 
+<meta HTTP-EQUIV="expires" CONTENT="Wed, 26 Feb 1997 08:21:57 GMT"> 
+
+
+
 <META HTTP-EQUIV="expires" CONTENT="0">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -22,13 +29,14 @@
 <link rel="stylesheet" href="../personal_page/css/style.css">
 <!-- endinject -->
 <link rel="shortcut icon" href="../personal_page/images/favicon.png" />
-<!-- 上传头像-->
-
-
 
 <script src="/ssm_grimm/js/jquery.min.js" type="text/javascript"></script>
 
-	
+	<!-- 时间线-->
+
+  <link rel="stylesheet" href="../layui/css/layui.css"  media="all">
+
+
 	
 	
 	
@@ -47,7 +55,16 @@
 <!-- Custom js for this page-->
 <script src="../personal_page/js/dashboard.js"></script>
 
+<script type="text/javascript">
+	function managemessage() {
 
+		
+					$("#personalinfo").attr("style","display:none");
+					$("#sendmessage").show();
+		
+
+	}
+</script>
 
 <!-- 获取验证码 -->
 	<script type="text/javascript">
@@ -292,8 +309,6 @@ function getPhoto(){
 
 </script>
 
-
-
 <!-- websocket -->
 <script type="text/javascript">
 window.onload= function   line(){
@@ -337,39 +352,51 @@ window.onload= function   line(){
 
 		function receive(sendMessage) {
 			//$("#message0").remove;
+			if(sendMessage.indexOf("管理员大大说")!=-1){
+				
+				$(".bg-danger").removeAttr("style");
+				$("#manfalt0").find("p").text(sendMessage);
+				var newmessage = $("#manfalt0").clone().removeAttr("style");
 			
-			var strs = new Array(); //定义一数组 
-			strs = sendMessage.split("用户手机号"); //字符分割 
-			var time = strs[0];
-			var strs1 = new Array(); //定义一数组 
-			strs1 = strs[1].split("用户名字"); //字符分割
-			var whosendyou = strs1[0];//手机号
-			var strs2 = new Array(); //定义一数组
-			strs2 = strs1[1].split("发来消息");
-			var name = strs2[0];
-			var content = strs2[1];
-			
-			var numMessage = $("#who_send").children(".message").length;
-			if (numMessage - 1 == 0) {
+				newmessage.appendTo("#mansend");
+			}else{
+				
+				var strs = new Array(); //定义一数组 
+				strs = sendMessage.split("用户手机号"); //字符分割 
+				var time = strs[0];
+				var strs1 = new Array(); //定义一数组 
+				strs1 = strs[1].split("用户名字"); //字符分割
+				var whosendyou = strs1[0];//手机号
+				var strs2 = new Array(); //定义一数组
+				strs2 = strs1[1].split("发来消息");
+				var name = strs2[0];
+				var content = strs2[1];
+				
+				var numMessage = $("#who_send").children(".message").length;
+				if (numMessage - 1 == 0) {
 
-				$("#receiveTishi").removeAttr("style");
+					$("#receiveTishi").removeAttr("style");
+				}
+
+				var newmessage = $("#message" + (numMessage - 1)).clone().attr(
+						'id', 'message' + numMessage).removeAttr("style");
+				newmessage.appendTo("#who_send");
+				//赋值
+				$("#message" + numMessage).find("img").attr('src',
+						'../userPhoto/' + whosendyou + '.jpg');
+				$("#message" + numMessage).find("img").attr('onerror',
+						'this.src="../userPhoto/default.jpg"');
+				$("#message" + numMessage).find("h8").text(name);
+				$("#message" + numMessage).find("h5").text(time);
+				$("#message" + numMessage).find("p").text(whosendyou);
+
+				var numMessage = $("#who_send").children(".message").length;
+
+				$("#messageNum").html(numMessage - 1);
+				
 			}
-
-			var newmessage = $("#message" + (numMessage - 1)).clone().attr(
-					'id', 'message' + numMessage).removeAttr("style");
-			newmessage.appendTo("#who_send");
-			//赋值
-			$("#message" + numMessage).find("img").attr('src',
-					'../userPhoto/' + whosendyou + '.jpg');
-			$("#message" + numMessage).find("img").attr('onerror',
-					'this.src="../userPhoto/default.jpg"');
-			$("#message" + numMessage).find("h8").text(name);
-			$("#message" + numMessage).find("h5").text(time);
-			$("#message" + numMessage).find("p").text(whosendyou);
-
-			var numMessage = $("#who_send").children(".message").length;
-
-			$("#messageNum").html(numMessage - 1);
+			
+			
 
 		}
 		
@@ -382,6 +409,18 @@ function turnChat(e) {
 	 
 	
 }
+
+function sendmessage(){
+	
+	
+	var text=$("#managementmessage").val();
+	if(text==""){alert("请输入内容"); return ;}
+	
+	websocket.send("0我是管理员"+text);
+	
+	
+	
+} 
 	</script>
 	
 
@@ -523,9 +562,10 @@ label {
 							class="mdi mdi-cached mr-2 text-success"></i> 个人资料
 						</a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="#"> <i
+						<a class="dropdown-item" href="/ssm_grimm/ajax/destroy.mvc"> <i
 							class="mdi mdi-logout mr-2 text-primary"></i> 注销
 						</a>
+						
 					</div></li>
 				<li class="nav-item d-none d-lg-block full-screen-link"><a
 					class="nav-link"> <i class="mdi mdi-fullscreen"
@@ -547,7 +587,7 @@ label {
 						</h6>
 						<div class="dropdown-divider"></div>
 						<div class="dropdown-item preview-item message" id="message0"
-							style="display: none" onclick="turnChat(this);">
+						  onclick="turnChat(this);" style="display: none">
 							<p style="display: none;">dddddd </p>
 							<div class="preview-thumbnail">
 								<img src="../personal_page/images/faces/face4.jpg" alt="image"
@@ -570,14 +610,14 @@ label {
 					class="nav-link count-indicator dropdown-toggle"
 					id="notificationDropdown" href="#" data-toggle="dropdown"> <i
 						class="mdi mdi-bell-outline"></i> <span
-						class="count-symbol bg-danger"></span>
+						class="count-symbol bg-danger" style="display: none"></span>
 				</a>
 					<div
 						class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list"
-						aria-labelledby="notificationDropdown">
+						aria-labelledby="notificationDropdown" id="mansend">
 						<h6 class="p-3 mb-0">系统消息</h6>
-						<div class="dropdown-divider"></div>
-						<a class="dropdown-item preview-item">
+						
+						<a class="dropdown-item preview-item" id="manfalt0" style="display: none">
 							<div class="preview-thumbnail">
 								<div class="preview-icon bg-success">
 									<i class="mdi mdi-calendar"></i>
@@ -585,7 +625,7 @@ label {
 							</div>
 							<div
 								class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-								<h6 class="preview-subject font-weight-normal mb-1">系统消息</h6>
+							
 								<p class="text-gray ellipsis mb-0">Just a reminder that you
 									have an event today</p>
 							</div>
@@ -594,11 +634,11 @@ label {
 
 					</div></li>
 				<li class="nav-item nav-logout d-none d-lg-block"><a
-					class="nav-link" href="#"> <i class="mdi mdi-power">注销</i>
+					class="nav-link" href="/ssm_grimm/ajax/destroy.mvc"> <i class="mdi mdi-power">注销</i>
 
 				</a></li>
 				<li class="nav-item nav-settings d-none d-lg-block"><a
-					class="nav-link" href="#"> <i
+					class="nav-link" href="/ssm_grimm/login_by_password.jsp"> <i
 						class="mdi mdi-format-line-spacing">切换账号</i>
 				</a></li>
 			</ul>
@@ -636,9 +676,9 @@ label {
 				</a>
 					<div class="collapse" id="ui-basic">
 						<ul class="nav flex-column sub-menu">
-							<li class="nav-item"><a class="nav-link" href="#">论坛发表历史</a></li>
+							<li class="nav-item"><a class="nav-link" href="/ssm_grimm/ajax/showPostingHistory.mvc">论坛发表历史</a></li>
 							<li class="nav-item"><a class="nav-link"
-								href="pages/ui-features/typography.html">交流历史</a></li>
+								href="/ssm_grimm/ajax/showReviewDetail.mvc">交流历史</a></li>
 						</ul>
 					</div></li>
 				<li class="nav-item"><a class="nav-link" href="#"> <span
@@ -655,8 +695,8 @@ label {
 					<div class="collapse" id="general-pages">
 						<ul class="nav flex-column sub-menu">
 							<li class="nav-item"><a class="nav-link" href="/ssm_grimm/ajax/getUserList.mvc">删用户</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">删帖</a></li>
-							<li class="nav-item"><a class="nav-link" href="#">发送推送消息</a></li>
+							<li class="nav-item"><a class="nav-link" href="/ssm_grimm/ajax/showAllPosting.mvc">删帖</a></li>
+							<li class="nav-item" onclick="managemessage();"><a class="nav-link" href="#">发送推送消息</a></li>
 
 						</ul>
 					</div></li>
@@ -773,17 +813,23 @@ label {
 
 ================================================================================
 
+					<div style="width: 100%; height: 100%; text-align: center; display:none"
+						id="sendmessage">
+					
+						<textarea id="managementmessage" name="managementmessage" style="width:200px; height:100px"></textarea>
+						 
+						<button value="发送给所有在线的用户" onclick="sendmessage();">发送给所有在线用户</button>
+						
+					</div>
+					
  ========================================================================================
 
 					<div style="width: 100%; height: 100%; text-align: center;display:none"
 						id="changephooto">
 
-                           <iframe src="../uploadphoto.jsp" style="width: 100%;height: 100%   ;frameborder:no;scrolling : no" >
+                           <iframe src="../uploadphoto.jsp" style="width: 100%;height: 100%   ;frameborder:no;scrolling : no"></iframe>
 
 					</div>
-
-
-					================================================================================
 
 
 

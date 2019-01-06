@@ -94,4 +94,31 @@ public class HistoryPostingRecordServiceImp implements edu.yuying.service.Histor
 		return postInfoDao.showPostById(id);
 	}
 
+	/* (non-Javadoc)
+	 * @see edu.yuying.service.HistoryPostingRecordService#showAllSelfReviews()
+	 */
+	@Override
+	public List<RecordHistoricalChanges> showAllSelfReviews(String  fromPhone) {
+		// TODO Auto-generated method stub
+		return postInfoDao.showAllSelfReviews(  fromPhone);
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.yuying.service.HistoryPostingRecordService#showAllPosting()
+	 */
+	@Override
+	public List<HistoryPostingRecord> showAllPosting() {
+		// TODO Auto-generated method stub
+		return  postInfoDao.showAllPosting();
+	}
+
+	/* (non-Javadoc)
+	 * @see edu.yuying.service.HistoryPostingRecordService#showAllreviewlist(java.lang.String)
+	 */
+	@Override
+	public List<RecordHistoricalChanges> showAllreviewlist() {
+		// TODO Auto-generated method stub
+		return postInfoDao.showAllreviewlist();
+	}
+
 }

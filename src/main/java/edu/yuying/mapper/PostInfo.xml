@@ -119,5 +119,41 @@
 	</select>
 
 
+	<!-- 显示自己所有的评论详情 -->
+	
 
+    
+    <resultMap type="RecordHistoricalChanges" id="recordHistoricalChangesResult">
+
+		<id property="id" column="id" />
+
+		<result property="sendPhone" column="SendPhone" />
+		
+		<result property="receivePhone" column="ReceivePhone" />
+		<result property="Content" column="Content" />
+			<result property="time" column="time" />
+
+		<association property="fromuser" column="SendPhone" select="getUserInfoByphone" />
+		<association property="touser" column="ReceivePhone" select="getUserInfoByphone" />
+		<association property="historyPostingRecord" column="id" select="showPostById" />
+
+
+	
+	</resultMap>
+	
+	<select id="showAllSelfReviews" timeout="5" statementType="PREPARED"
+		resultMap="recordHistoricalChangesResult">
+		select * from recordsofhistoricalexchanges where sendphone=#{0}
+	</select>
+	
+	<select id="showAllPosting" timeout="5" statementType="PREPARED"
+		resultType="HistoryPostingRecord">
+		select * from historypostingrecord
+	</select>
+	<!-- 顯示所有評論 -->
+		<select id="showAllreviewlist" timeout="5" statementType="PREPARED"
+		resultType="RecordHistoricalChanges">
+		select * from recordsofhistoricalexchanges
+	</select>
+ 
 </mapper>  

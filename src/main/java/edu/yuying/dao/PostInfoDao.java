@@ -9,6 +9,7 @@ import org.apache.ibatis.annotations.Param;
 
 import edu.yuying.entity.HistoryPostingRecord;
 import edu.yuying.entity.HotPosting;
+import edu.yuying.entity.RecordHistoricalChanges;
 import edu.yuying.entity.User;
 
 /**
@@ -24,6 +25,8 @@ import edu.yuying.entity.User;
  */
 
 public interface PostInfoDao {
+	//显示所有
+	 public List<HistoryPostingRecord>showAllPosting();
 	//查看指定id的帖子
 	  public HistoryPostingRecord showPostById(int  id);
 	//查看自己上传过的所有
@@ -37,5 +40,9 @@ public interface PostInfoDao {
    int  deletePost(long id);
    //查看热帖
    public List<HotPosting> showHotPosting();
-    
+   //查看自己的评论
+   
+   public List<RecordHistoricalChanges> showAllSelfReviews(String  fromPhone);
+ //显示所有評論
+ 	 public List<RecordHistoricalChanges>showAllreviewlist();
 }

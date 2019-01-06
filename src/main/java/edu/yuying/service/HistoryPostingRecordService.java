@@ -25,6 +25,11 @@ import edu.yuying.entity.User;
  */
 
 public interface HistoryPostingRecordService {
+	
+	
+	//显示所有的帖子
+
+	public List<HistoryPostingRecord> 	showAllPosting();
 public List<HistoryPostingRecord> showHistoryPost(String fromphone);
 	//根据id显示帖子
 
@@ -39,5 +44,9 @@ public HistoryPostingRecord showPostById(int id);
 	int deletePostingById(long id);
 	//查看热帖
 	   public List<HotPosting> showHotPosting();
-
+	   //查看自己给别人的所有评论
+   public List<RecordHistoricalChanges> showAllSelfReviews(String  fromPhone);
+//显示所有pinglun
+   public List<RecordHistoricalChanges> showAllreviewlist();
+   
 }
