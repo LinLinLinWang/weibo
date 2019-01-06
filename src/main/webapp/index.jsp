@@ -220,7 +220,7 @@ td {
 
 
 
-<div id="banner_tabs" class="flexslider" style="margin-left:184px;width:500px;float:left">
+<div id="banner_tabs" class="flexslider" style="margin-left:184px;width:600px;float:left">
 
 	<ul class="slides">
 		<li>
@@ -250,7 +250,7 @@ td {
 	</ol>
 </div>
 
-<div  style="width:500px; background-color:yellow;height:464px;margin: 18px auto 20px 10px; float:left; ">
+<div  style="width:400px; background-color:yellow;height:464px;margin: 18px auto 20px 10px; float:left; ">
 
 <div
 			style="background-color: #efefef; width: auto; text-align: center; height: 80px">
@@ -372,7 +372,6 @@ td {
 
 
 				</c:forEach>
-
 
 			</tbody>
 		</table>

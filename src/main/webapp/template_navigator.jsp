@@ -55,8 +55,8 @@
             </div>
             <table style="float:right">
                 <tr style="height:15px;margin-top:30px;display:block;">
-                    <td><a class="a_basic" href="">昵称</a></td>
-                    <td><a class="a_basic" href="">个人中心</a></td>
+                    <td><a class="a_basic" href="${user.uName}">昵称</a></td>
+                    <td><a class="a_basic" href="ajax/turn_personal.mvc">个人中心</a></td>
                     <td><a class="a_basic" href="">消息</a></td>
                     <td><a class="a_basic" href="/ssm_grimm/register.jsp">注册</a></td>
                     <td><a class="a_basic" href="/ssm_grimm/login_by_password.jsp">登录</a><a class="a_basic" href="/ssm_grimm/ajax/destroy.mvc">注销</a></td>

@@ -107,9 +107,8 @@
 	<!-- 显示热帖 -->
 	<select id="showHotPosting" timeout="5" statementType="PREPARED"
 		resultType="HotPosting">
-		select a.id,a.content,COUNT(b.id)as num from
-		historypostingrecord
-		a,recordsofhistoricalexchanges b where a.id=b.id
+		select a.id,a.content,COUNT(b.id) as num from
+		historypostingrecord a,recordsofhistoricalexchanges b where a.id=b.id
 		GROUP BY(b.id)
 	</select>
 	<!-- 显示指定id的帖子详情 -->
