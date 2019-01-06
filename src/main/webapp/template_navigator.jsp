@@ -66,7 +66,7 @@ a {
 
 					<c:if test="${sessionScope.userphone!=null}">
 						<td><a class="a_basic" href="#">${sessionScope.userphone}</a></td>
-						<td><a class="a_basic" href="ajax/turn_personal.mvc">个人中心</a></td>
+						<td><a class="a_basic" href="/ssm_grimm/ajax/turn_personal.mvc">个人中心</a></td>
 						<td><a class="a_basic" href="/ssm_grimm/ajax/destroy.mvc">注销</a><td>
 						</td>
 					</c:if>
@@ -92,7 +92,7 @@ a {
 					<td class="td_menu"><a class="a_menu"
 						href="/ssm_grimm/ajax/index.mvc">首页</a></td>
 					<td class="td_menu"><a class="a_menu" href="">帖子中心</a></td>
-					<td class="td_menu"><a class="a_menu" href="publish.jsp">发帖子</a></td>
+					<td class="td_menu"><a class="a_menu" href="/ssm_grimm/publish.jsp">发帖子</a></td>
 					<td class="td_menu"><a class="a_menu" href="">我的帖子</a></td>
 				</tr>
 			</table>
