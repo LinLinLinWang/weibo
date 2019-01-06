@@ -143,9 +143,9 @@ public class IndexController {
 			String sessionpassword=(String)request.getSession().getAttribute("userpwd");
 			if(null!=usernamefromcookie){
 				
-				Util.setCookie(request, response, "usernamefromcookie", null);
+				Util.setCookie(request, response, "session_name", null);
 			}if(null!=passwordfromcookie){
-				Util.setCookie(request, response, "passwordfromcookie", null);
+				Util.setCookie(request, response, "session_password", null);
 			}if(null!=sessioname){
 				request.getSession().setAttribute("userphone", null);
 			}if(null!=sessionpassword){

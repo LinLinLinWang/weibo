@@ -10,7 +10,7 @@
 <title>帖子详情</title>
 <style>
 </style>
-<<<<<<< HEAD
+
 <link rel="stylesheet" type="text/css" href="/ssm_grimm/a_data/dmaku.css">
 <script src="/ssm_grimm/js/jquery.min.js"></script>
 <script type="text/javascript" src="/ssm_grimm/js/modernizr.js"></script>
@@ -59,12 +59,22 @@ function  reviewpeople(dd,phone){
 				window.location.href="/ssm_grimm/ajax/showPostDetail.mvc?postid="+dd;
 				
 			}
+			else{
+				
+				alert("请登录账号！");
+		
+				 setTimeout('window.location.href="/ssm_grimm/ajax/index.mvc"',1000);//5秒后执行
+					    
 			
 			
 
+		}
 		},
-
 		error : function(data) {
+			alert("请登录账号！");
+			
+		 
+		    setTimeout('window.location.href="/ssm_grimm/ajax/index.mvc"',1000);//5秒后执行
 
 		}
 
@@ -78,9 +88,7 @@ function  reviewpeople(dd,phone){
 
 
 </script>
-=======
 
->>>>>>> branch 'master' of https://github.com/GypsyFree/project.git
 </head>
 <body>
 	<c:import url="template_navigator.jsp"></c:import>

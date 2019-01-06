@@ -299,6 +299,19 @@ function getPhoto(){
 <!-- websocket -->
 <script type="text/javascript">
 window.onload= function   line(){
+	
+
+		var now = new Date();
+
+		var day = ("0" + now.getDate()).slice(-2);
+
+		var month = ("0" + (now.getMonth() + 1)).slice(-2);
+
+		var today = now.getFullYear() + "-" + (month) + "-" + (day);
+
+		$('#age').val(today);
+	
+
 	var userphone = $("#userphone").text();
 
 	if ('WebSocket' in window) {
@@ -841,19 +854,7 @@ label {
 		<!-- page-body-wrapper ends -->
 	</div>
 	<!-- container-scroller -->
-	<script type="text/javascript">
-	window.onload = function() {
-		var now = new Date();
 
-		var day = ("0" + now.getDate()).slice(-2);
-
-		var month = ("0" + (now.getMonth() + 1)).slice(-2);
-
-		var today = now.getFullYear() + "-" + (month) + "-" + (day);
-
-		$('#age').val(today);
-	}
-</script>
 	
 
 </body>

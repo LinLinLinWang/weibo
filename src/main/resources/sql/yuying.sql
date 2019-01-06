@@ -11,7 +11,7 @@
  Target Server Version : 80013
  File Encoding         : 65001
 
- Date: 06/01/2019 19:16:43
+ Date: 07/01/2019 01:34:32
 */
 
 SET NAMES utf8mb4;
@@ -81,6 +81,8 @@ INSERT INTO `chatwithpeople` VALUES ('15964245533', '15964245599', 'dddddd', '20
 INSERT INTO `chatwithpeople` VALUES ('15964245533', '15964245599', 'dddddd', '2018-12-29 07:45:21.141');
 INSERT INTO `chatwithpeople` VALUES ('15964245533', '15964245599', 'dddddd', '2018-12-29 07:45:21.306');
 INSERT INTO `chatwithpeople` VALUES ('15964245533', '15964245599', 'dddddd', '2018-12-29 07:45:21.448');
+INSERT INTO `chatwithpeople` VALUES ('15964245544', '15964245555', '你好呀\n', '2019-01-06 14:50:21.436');
+INSERT INTO `chatwithpeople` VALUES ('15964245544', '15964245555', '別發啦', '2019-01-06 14:50:38.923');
 INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245533', '和肉体和风格化风格化', '2018-12-30 14:03:07.027');
 INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245533', '和肉体和风格化风格化', '2018-12-30 14:03:13.618');
 INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245533', '和肉体和风格化风格化', '2018-12-30 14:03:13.791');
@@ -96,6 +98,36 @@ INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245533', 'fgdgdfgwerwr
 INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245533', 'fgdgdfgwerwrwwerwrrewrwerwe', '2019-01-02 10:21:50.953');
 INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245533', 'fgdgdfgwerwrwwerwrrewrwerwe', '2019-01-02 10:21:51.124');
 INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245533', 'fgdgdfgwerwrwwerwrrewrwerwe', '2019-01-02 10:21:51.266');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:47:45.798');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:47:45.949');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:47:46.100');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:47:46.251');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:47:46.411');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:47:46.564');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:47:46.699');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:48:19.453');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:48:19.604');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:48:19.740');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:48:19.833');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:48:19.980');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:48:20.131');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:48:40.932');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:48:41.084');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'fdssdfsdfs', '2019-01-06 14:48:41.252');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:02.760');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:02.928');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:03.119');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:03.238');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:03.383');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:30.846');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:30.998');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:31.245');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:31.388');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:31.524');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:31.660');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:31.795');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:31.908');
+INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245544', 'csfsdf', '2019-01-06 14:50:32.052');
 INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245588', 'asdads', '2019-01-05 07:03:21.810');
 INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245588', 'asdads', '2019-01-05 07:03:22.690');
 INSERT INTO `chatwithpeople` VALUES ('15964245555', '15964245588', 'asdads', '2019-01-05 07:03:22.843');
@@ -341,8 +373,6 @@ CREATE TABLE `historypostingrecord`  (
 -- ----------------------------
 -- Records of historypostingrecord
 -- ----------------------------
-INSERT INTO `historypostingrecord` VALUES (10, '15964245544', '模块v法律是看得见进口的撒娇看到几个安德森可根据卡拉圣诞节噶但是酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷就打开拉萨啊啊啊啊啊啊啊啊啊啊啊啊啊啊就', 0, '2019-01-04 09:20:44');
-INSERT INTO `historypostingrecord` VALUES (11, '15964245544', '模块v法律是看得见进口的撒娇看到几个安德森可根据卡拉圣诞节噶但是酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷就打开拉萨啊啊啊啊啊啊啊啊啊啊啊啊啊啊就', 0, '2019-01-04 09:21:05');
 INSERT INTO `historypostingrecord` VALUES (12, '15964245544', '模块v法律是看得见进口的撒娇看到几个安德森可根据卡拉圣诞节噶但是酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷就打开拉萨啊啊啊啊啊啊啊啊啊啊啊啊啊啊就', 0, '2019-01-04 09:21:14');
 INSERT INTO `historypostingrecord` VALUES (13, '15964245544', 'asfjojkoooooooooooo啊就', 0, '2019-01-04 09:21:17');
 INSERT INTO `historypostingrecord` VALUES (14, '15964245555', '模块v法律是看得见进口的撒娇看到几个安德森可根据卡拉圣诞节噶但是酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷就打开拉萨啊啊啊啊啊啊啊啊啊啊啊啊啊啊就', 0, '2019-01-04 09:21:19');
@@ -350,6 +380,11 @@ INSERT INTO `historypostingrecord` VALUES (15, '15964245544', '模块v法律是�
 INSERT INTO `historypostingrecord` VALUES (16, '15964245544', '模块v法律是看得见进口的撒娇看到几个安德森可根据卡拉圣诞节噶但是酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷就打开拉萨啊啊啊啊啊啊啊啊啊啊啊内容啊啊啊就', 0, '2019-01-04 09:21:24');
 INSERT INTO `historypostingrecord` VALUES (17, '15964245544', '模块v法律是看得见进口的撒娇看到几个安德森可根据卡拉圣诞节噶但是酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷就打开拉萨啊啊啊啊啊啊啊啊啊啊啊啊啊啊就', 0, '2019-01-04 09:21:25');
 INSERT INTO `historypostingrecord` VALUES (18, '15964245544', '模块v法律是看得见进口的撒娇看到几个安德森可根据卡拉圣诞节噶但是酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷酷就打开拉萨啊啊啊啊啊啊啊啊啊啊啊啊啊啊就', 0, '2019-01-04 09:21:27');
+INSERT INTO `historypostingrecord` VALUES (23, '15964245533', 'f\'s\'d\'f\'s\'d\'f+發士大夫士大夫', 4, '2019-01-06 15:09:47');
+INSERT INTO `historypostingrecord` VALUES (24, '15964245533', 'f\'s\'d\'f\'s\'d\'f的撒給+發士大夫士大夫 gadget阿達', 4, '2019-01-06 15:10:10');
+INSERT INTO `historypostingrecord` VALUES (25, '15964245533', '幅度薩芬+士大夫大師傅', 3, '2019-01-06 15:10:26');
+INSERT INTO `historypostingrecord` VALUES (26, '15964245533', 's+ss', -1, '2019-01-06 17:19:53');
+INSERT INTO `historypostingrecord` VALUES (27, '15964245533', 'dsad +as ', -1, '2019-01-06 17:20:42');
 
 -- ----------------------------
 -- Table structure for recordsofhistoricalexchanges
@@ -370,9 +405,19 @@ CREATE TABLE `recordsofhistoricalexchanges`  (
 -- ----------------------------
 -- Records of recordsofhistoricalexchanges
 -- ----------------------------
+INSERT INTO `recordsofhistoricalexchanges` VALUES (20, '15964245533', '15964245533', '各地政府g', '2019-01-06 15:10:36');
+INSERT INTO `recordsofhistoricalexchanges` VALUES (22, '15964245533', '15964245533', '的觀點', '2019-01-06 15:28:24');
+INSERT INTO `recordsofhistoricalexchanges` VALUES (23, '15964245533', '15964245533', 'sdsdssd', '2019-01-06 17:19:31');
+INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245533', '15964245544', 'de', '2019-01-06 17:21:03');
 INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245533', '15964245588', 'dfhsjhj内容士大夫', '2019-01-08 09:08:45');
 INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245533', '15964245599', '下周出差', '2019-01-05 09:06:44');
 INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245533', '15964245599', '收到罚单', '2019-01-05 09:08:24');
+INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245544', '15964245544', '房贷首付哈迪斯法国啥地方蝴蝶飞噶苏好的', '2019-01-06 14:22:57');
+INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245544', '15964245544', '你好我是胡歌', '2019-01-06 14:28:26');
+INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245544', '15964245544', '噶是大公司都的感覺哦卡的貧困看', '2019-01-06 14:31:34');
+INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245544', '15964245544', '古典詩歌撒旦給', '2019-01-06 14:31:42');
+INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245544', '15964245544', '胡歌', '2019-01-06 14:31:55');
+INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245544', '15964245544', '打發打發', '2019-01-06 14:40:47');
 INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245588', '15964245588', '啊士大夫十大', '2019-01-05 09:09:30');
 INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245588', '15964245599', '发生的', '2019-01-05 09:10:19');
 INSERT INTO `recordsofhistoricalexchanges` VALUES (16, '15964245588', '15964245599', '发生的', '2019-01-05 09:10:35');
@@ -400,10 +445,10 @@ CREATE TABLE `userinfo`  (
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES ('15964245533', '王林', 'llVP/Y+N7l1aECOoRPlAZQ==', '女', '默认的地址', 2, 'PAlqucYzYpSDB/HKyorWfA==', 0);
+INSERT INTO `userinfo` VALUES ('15964245533', '王林', 'UEOcDKNDh8HqA30pdfO+sg==', '男', '默认的地址', 4, 'PAlqucYzYpSDB/HKyorWfA==', 0);
 INSERT INTO `userinfo` VALUES ('15964245544', '王虎', 'llVP/Y+N7l1aECOoRPlAZQ==', '可怕的未知性别', '默认的地址', 0, 'dCzhjZejPFxwi9ok4CKIpA==', 0);
-INSERT INTO `userinfo` VALUES ('15964245555', 'd\'f\'s\'f', 'llVP/Y+N7l1aECOoRPlAZQ==', '可怕的未知性别', '默认的地址', 0, '5xqxFXkKshU1VUOhzhNizw==', 2);
-INSERT INTO `userinfo` VALUES ('15964245566', '王虎', 'llVP/Y+N7l1aECOoRPlAZQ==', '可怕的未知性别', '默认的地址', 0, 'KAsqnrA+2mH4F1pXronGww==', 2);
+INSERT INTO `userinfo` VALUES ('15964245555', 'd\'f\'s\'f', 'llVP/Y+N7l1aECOoRPlAZQ==', '可怕的未知性别', '默认的地址', 0, '5xqxFXkKshU1VUOhzhNizw==', 1);
+INSERT INTO `userinfo` VALUES ('15964245566', '王虎', 'llVP/Y+N7l1aECOoRPlAZQ==', '可怕的未知性别', '默认的地址', 0, 'KAsqnrA+2mH4F1pXronGww==', 1);
 INSERT INTO `userinfo` VALUES ('15964245588', '的撒大', 'llVP/Y+N7l1aECOoRPlAZQ==', '可怕的未知性别', '默认的地址', 0, 'dGe6dRJfBPIz7qal/ndjtw==', 1);
 INSERT INTO `userinfo` VALUES ('15964245599', '水水水水', 'llVP/Y+N7l1aECOoRPlAZQ==', '女', '默认的地址', 0, 'O7Jbku4L42WS8yWrbDKwkA==', 0);
 

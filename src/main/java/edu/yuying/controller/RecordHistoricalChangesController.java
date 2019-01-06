@@ -78,11 +78,9 @@ public class RecordHistoricalChangesController {
 			 String  usernamefromcookie=Util.searchCookie(request, response, "session_name");
 		
 			String sessioname=(String)request.getSession().getAttribute("userphone");
-			if(null==usernamefromcookie){
+			
 				fromphone=sessioname;
-			}else{
-				fromphone=usernamefromcookie;
-			}
+			
 			Map<String, Object> map = new HashMap<String, Object>();
            String id=request.getParameter("id");
            String content=request.getParameter("content");
