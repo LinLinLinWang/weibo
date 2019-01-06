@@ -52,8 +52,11 @@ public class RecordHistoricalChangesController {
 			 String  usernamefromcookie=Util.searchCookie(request, response, "session_name");
 		
 			String sessioname=(String)request.getSession().getAttribute("userphone");
-			if(null==usernamefromcookie)phone=sessioname;
-			if(null==sessioname)phone=usernamefromcookie;
+			if(null==usernamefromcookie){
+				phone=sessioname;
+			}else{
+				phone=usernamefromcookie;
+			}
 			//ModelAndView mav = new ModelAndView();
 			//Map<String, Object> map = new HashMap<String, Object>();
 		

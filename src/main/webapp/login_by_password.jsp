@@ -127,7 +127,7 @@
 					  
 				  }  if(data.state==2){
 					
-					  alert("登录成功");
+				     window.location.href="/ssm_grimm/ajax/index.mvc";
 				  } if(data.state==3){
 					
 					  alert("你账号已被管理员注销");

@@ -81,7 +81,7 @@ public class IndexController {
 				 mav.addObject("numtotal", numtotal);
 				 mav.addObject("peopletotal", peopletotal);
 				 mav.addObject("reviewnum", reviewnum);
-				 
+				 mav.addObject("username", userServiceImp.user_exist_returnUser(sessioname).getuName());
 				return mav;
 			}else{
 				 mav.addObject("userdetail", userServiceImp.user_exist_returnUser(usernamefromcookie));
@@ -90,6 +90,7 @@ public class IndexController {
 				 mav.addObject("numtotal", numtotal);
 				 mav.addObject("peopletotal", peopletotal);
 				 mav.addObject("reviewnum", reviewnum);
+				 mav.addObject("username", userServiceImp.user_exist_returnUser(usernamefromcookie).getuName());
 				 return mav;
 				
 			}
@@ -111,7 +112,7 @@ public class IndexController {
 			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		//String [][]showlis=new String[5][3];
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("/index");
+		mav.setViewName("/wait");
 		 String  usernamefromcookie=Util.searchCookie(request, response, "session_name");
 		  String  passwordfromcookie= Util.searchCookie(request, response, "session_password");
 		String sessioname=(String)request.getSession().getAttribute("userphone");

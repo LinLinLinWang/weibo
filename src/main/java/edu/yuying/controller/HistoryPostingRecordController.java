@@ -46,12 +46,18 @@ public class HistoryPostingRecordController {
 			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		 ModelAndView  map = new  ModelAndView ();
 		 String  usernamefromcookie=Util.searchCookie(request, response, "session_name");
-		
+		System.out.println(usernamefromcookie);
 		String sessioname=(String)request.getSession().getAttribute("userphone");
-			
+		System.out.println(sessioname);
 		String phone=null;
-		if(null==usernamefromcookie)phone=sessioname;
-		if(null==sessioname)phone=usernamefromcookie;
+		if(null==usernamefromcookie){
+			phone=sessioname;
+		}else{
+			phone=usernamefromcookie;
+		}
+			
+				
+		System.out.println("===================="+phone);
 		map.setViewName("/showselfposting");
 		List<HistoryPostingRecord> HistoryPostingRecord=historyPostingRecordServiceImp.showHistoryPost(phone);
 		//request.setAttribute("yourPost", HistoryPostingRecord);
@@ -64,6 +70,7 @@ public class HistoryPostingRecordController {
 	public @ResponseBody Map<String, Object> insertPostingHistory(HttpServletRequest request,
 			HttpServletResponse response) throws UnsupportedEncodingException, NoSuchAlgorithmException {
 		Map<String, Object> map = new HashMap<String, Object>();
+		request.setCharacterEncoding("UTF-8");
 		
 	//	String phone=(String)request.getSession().getAttribute("userphone");
 		String type=request.getParameter("type");
@@ -71,7 +78,7 @@ public class HistoryPostingRecordController {
 		String title=request.getParameter("title");
 		String phone = (String)request.getSession().getAttribute("userphone");
 		//title放在content中 中间用+连接 存储
-		String all = title + "+" + content;
+		String all = title + "内容" + content;
 		
 		//拿到user
 		User user = null;

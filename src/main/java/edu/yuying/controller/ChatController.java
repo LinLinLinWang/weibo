@@ -127,8 +127,11 @@ public class ChatController {
 			//String sessionpassword=(String)request.getSession().getAttribute("userpwd");
 		mav.addObject("whosend", whosendu);
 		mav.addObject("listmessage", listmessage);
-		if(null==usernamefromcookie)whoru=sessioname;
-		if(null==sessioname)whoru=usernamefromcookie;
+		if(null==usernamefromcookie){
+			whoru=sessioname;
+		}else{
+			whoru=usernamefromcookie;
+		}
 		mav.addObject("whoru", whoru);
 		mav.addObject("whosenduname", userServiceImp.user_exist_returnUser(whosendu).getuName());
 		mav.addObject("yourname", userServiceImp.user_exist_returnUser(whoru).getuName());
