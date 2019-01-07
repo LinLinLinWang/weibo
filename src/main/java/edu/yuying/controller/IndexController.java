@@ -108,7 +108,12 @@ public class IndexController {
 			// mav.addObject("userdetail", userServiceImp.user_exist_returnUser(sessioname));
 			 //热门帖子
 			 mav.addObject("hotpostlist", historyPostingRecordServiceImp.showHotPosting());
-			 mav.addObject("newhis", historyPostingRecordServiceImp.showAllPosting().subList(0, 3));
+			 try {
+				 mav.addObject("newhis", historyPostingRecordServiceImp.showAllPosting().subList(0, 3));
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
 			 mav.addObject("numtotal", numtotal);
 			 mav.addObject("peopletotal", peopletotal);
 			 mav.addObject("reviewnum", reviewnum);
